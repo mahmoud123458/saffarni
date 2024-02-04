@@ -1,0 +1,332 @@
+
+    <!-- Start Header  -->
+    <header id="header">
+      <div class="container">
+        <a href="#" class="logo" title="Safarnee">Safarnee</a>
+        <nav>
+          <i
+            class="fas fa-bars toggle-menu"
+            onClick="showBar()"
+            id="toggle-menu-btn"></i>
+          <ul class="main-nav">
+            <li><a href="#home" class="active home-link">Home</a>
+                <ul class="links">
+                  <li><a href="#travel">Travel</a></li>
+                  <li><a href="#book">Book</a></li>
+                </ul>
+            </li>
+            <li><a href="/pages/shop/shop.html">Shop</a></li>
+            <li><a href="/pages/blog/blog.html">Blog</a></li>
+            <li><a href="/pages/about/about.html">About</a></li>
+            <li><a href="/pages/contact/contact.html">Contact</a></li>
+          </ul>
+          <button class="btn btn-login" onClick="showForm()">Login<i class="fa-regular fa-user"></i></button>
+          <img src="./images/palstineFlag.png" alt="free palestine" title="#Free Palestine">
+        </nav>
+        <!-- Login form -->
+        <div class="login-form">
+          <form action="">
+            <i class="fas fa-times" id="form-close" onclick="hideForm()"></i>
+            <h2 class="title">login</h2>
+            <input type="email" class="box" placeholder="Enter your email" required>
+            <input type="password" class="box" placeholder="Enter your password" autocomplete="cc-number" required>
+            <!-- autocomplete="cc-csc" -->
+            <input type="submit" class="box btn" value="login now">
+            <input type="checkbox" id="remmber" >
+            <label for="remmber">remember me.</label>
+            <p>forget password? <a href="">click here..</a></p>
+            <p>don't have acount? <a href="#register" onclick="showFormRegister()">Sign Up</a></p>
+          </form>
+        </div>
+        <!-- Register form -->
+        <div class="register-form" id="register">
+          <form action="">
+            <i class="fas fa-times" id="form-close" onclick="hideForm()"></i>
+            <h2 class="title">Sign Up</h2>
+            <input type="text" class="box" placeholder="First Name" required>
+            <input type="text" class="box" placeholder="Last Name" required>
+            <input type="email" class="box" placeholder="Email" required>
+            <input type="password" class="box" placeholder="Password" autocomplete="cc-number" required>
+            <input type="password" class="box" placeholder="Retype thr password" autocomplete="cc-number" required>
+            <input type="checkbox" id="remember">
+            <label for="remember">remember me.</label>
+            <input type="submit" class="box btn" value="Sign Up">
+            
+          </form>
+        </div>
+      </div>
+    </header>
+    <!-- End Header  -->
+    <!-- Start Landing -->
+    <div class="landing">
+      <div class="img_bg">
+      <div class="container">
+        <div class="text">
+          <h1><span>Adventure</span> & Experience The Travel!</h1>
+        </div>
+        <div class="image img-up">
+          <img src="images/land-1.jpg" alt="landing">
+        </div>
+        <div class="image img-down">
+          <img src="images/land-3.jpeg" alt="landing">
+        </div>
+        <a href="#travel" class="go-down" title="go-down">
+          <i class="fa-solid fa-angles-down fa-xl"></i>
+        </a>
+      </div>
+    </div>
+    </div>
+    <!-- End Landing -->
+    <!-- Start Traveling -->
+    <div class="travel" id="travel">
+      <h2 class="main-title" >travel</h2>
+      <div class="container">
+        <div class="textures">
+          <div class="text">
+            <h4>Dream Vacation Destination</h4>
+            <h1>Plan the Trip of a Lifetime with Ease</h1>
+            <p>Whether you're looking for a romantic getaway, a family-friendly adventure, or a solo journey to explore the world, a travel agency can provide you with a custom-tailored itinerary that exceeds your expectations.</p>
+            <button class="btn">More Info</button>
+          </div>
+        </div>
+
+        <!-- Box banner -->
+        <div class="box">
+          <div class="banner">
+            <img src="./images/c-icon-visual-01.gif" class="gif" alt="">
+            <p>City Walks Tour</p>
+            <img src="./images/d-banner-01.jpeg" alt="banner-1">
+          </div>
+          <div class="banner">
+            <img src="./images/c-icon-visual-02.gif" class="gif" alt="">
+            <p>Electric Bikes</p>
+            <img src="./images/d-banner-02.jpeg" alt="banner-2">
+          </div>
+          <div class="banner">
+            <img src="./images/c-icon-visual-03.gif" class="gif" alt="">
+            <p>Skyscrapers View</p>
+            <img src="./images/d-banner-03.jpeg" alt="banner-3">
+          </div>
+        </div>
+
+        <div class="box">
+          <div class="package box-1">
+            <div class="image">
+              <img src="./images/mecca.jpg" alt="">
+            </div>
+            <div class="time">
+              <i class="fa-sharp fa-solid fa-clock fa-xs"></i>
+              <span>2 weeks</span>
+              <i class="fa-solid fa-envelope fa-xs" onClick="showFormRequest()"></i>
+              <a href="#" title="map"><i class="fa-solid fa-map-location-dot fa-xs"></i></a>
+            </div>
+            <div class="text">
+              <h3>Mecca</h3>   <!-- city name --> 
+              <p class="location">Saudi Arabia</p>   <!-- country name -->
+              <p class="description">A trip to Mecca to spend the Hajj and Umrah and visit Grand Mosque.</p>
+              <div class="price">
+                <Button class="btn">Details</Button>
+                <p>EGP 30000 <span>EGP 40000</span></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="package box-2">
+            <div class="image">
+              <img src="./images/dubai.jpg" alt="">
+            </div>
+            <div class="time">
+              <i class="fa-sharp fa-solid fa-clock fa-xs"></i>
+              <span>7 Days</span>
+              <i class="fa-solid fa-envelope fa-xs" onClick="showFormRequest()"></i>
+              <a href="#" title="map"><i class="fa-solid fa-map-location-dot fa-xs"></i></a>
+            </div>
+            <div class="text">
+              <h3>Dubai</h3>  <!-- city name -->
+              <p class="location">United Arab Emirates</p>   <!-- country name -->
+              <p class="description">Visit Dubai, Khalifa Tower, and all the tourist and entertainment attractions.</p>
+              <div class="price">
+                <Button class="btn">Details</Button>
+                <p>EGP 25000 <span>EGP 30000</span></p>
+              </div> 
+            </div>
+          </div>
+
+          <div class="package box-3">
+            <div class="image">
+              <img src="./images/marrakech.jfif" alt="">
+            </div>
+            <div class="time">
+              <i class="fa-sharp fa-solid fa-clock fa-xs"></i>
+              <span>4 Days</span>
+              <i class="fa-solid fa-envelope fa-xs" onClick="showFormRequest()"></i>
+              <i class="fa-solid fa-map-location-dot fa-xs"></i>
+            </div>
+            <div class="text">
+              <h3>Marrakech</h3>   <!-- city name -->
+              <p class="location">Morocco</p>   <!-- country name -->
+
+              <p class="description">Marrakech is one of the attractive cities for tourists in Morocco. </p>
+
+              <div class="price">
+                <Button class="btn">Details</Button>
+                <p>EGP 15000 <span>EGP 20000</span></p>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+        
+        <div class="request">
+          <i class="fas fa-times" onclick="hideRequest()"></i>
+          <h3>Pre Sales Request</h3>
+          <p>Fill free to contact us for any additional information</p>
+          <form action="">
+            <label>ID: 152</label>
+            <input type="text" placeholder="Enter your name" required/>
+            <input type="text" placeholder="Enter your surname" />
+            <input type="email" placeholder="Enter your email" required/>
+            <input type="number" placeholder="Enter your phone" min="0" required/>
+            <input type="date" placeholder="mm/dd/yyyy" />
+            <input type="number" placeholder="Enter number guests" min="0" required/>
+            <textarea type="text" rows="4" placeholder="Your Message..."></textarea>
+            <input type="submit" value="Submit" class="btn" />
+          </form>
+        </div>
+      </div>
+      <!-- Arrow Go To Up Website  -->
+      <a href="#header" class="go-up" title="go-up">
+        <i class="fa-solid fa-angles-up fa-l"></i>
+      </a>
+    </div>
+    <!-- End Traveling -->
+
+    <!-- Start Book -->
+    <div class="book" id="book">
+      <h2 class="main-title">Book</h2>
+      <div class="container">
+        <h4>Choose your Trip</h4>
+        <h1>Start your Vacation Now</h1>
+        <p>Looking for your dream vacation destination but don't know where to start? With the help of experienced and knowledgeable travel agents, you can plan the trip of a lifetime with ease.</p>
+        <div class="search">
+          <form action="">
+            <div class="source">
+              <i class="fa-solid fa-plane-departure"></i>
+              <input list="source" name="source" placeholder="Source">
+              <datalist id="source">
+                <option value="Egypt">
+                <option value="Cairo International Airport">
+              </datalist>
+            </div>
+            <div class="dest">
+              <i class="fa-solid fa-plane-arrival"></i>
+              <input list="destination" name="destination" placeholder="Destination">
+              <datalist id="destination">
+                <option value="Egypt">
+                <option value="Dubai">
+                <option value="Morocco">
+                <option value="Qatar">
+                <option value="Al Riyadh">
+                <option value="Algeria">
+              </datalist>
+            </div>
+            <div class="class">
+              <i class="fa-solid fa-list-ul"></i>
+              <input list="economicClass" name="class" placeholder="Economic Class">
+              <datalist id="economicClass">
+                <option value="First Class">
+                <option value="Business Class">
+                <option value="Premium Economy">
+                <option value="Economy Class">
+              </datalist>
+            </div>
+            <input type="submit" class="btn" value="Search">
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- End Book -->
+
+    <!-- Start Travel Destinations -->
+    <div class="spikes">
+      <div class="travelDestinations">
+        <div class="container">
+          <div class="text">
+            <h4>Next Adventure</h4>
+            <h1>Travel Destinations Available Worldwide</h1>
+            <p>We have compiled a list of top destinations across the globe, scoured the world for the most alluring and fascinating places to visit. From the beautiful beaches of the Caribbean to the majestic mountains of Europe and the vibrant cities of Asia, our destination list has something for everyone.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End Travel Destinations -->
+
+
+    <!-- Start Footer -->
+    <footer>
+      <div class="container-footer">
+        <div class="row box">
+          <div class="col" id="company">
+            <a href="./index.html" class="logo footer" title="Safarnee">Safarnee</a>
+            <p>Travel beyond your imagination, with our Travel Agency!</p>
+            <div class="social">
+              <a href="https://www.facebook.com" title="facebook" style="--clr:#1877f2"><i class="fab fa-facebook"></i></a>
+              <a href="https://www.instagram.com" title="instagram" style="--clr:#c32aa3"><i class="fab fa-instagram"></i></a>
+              <a href="https://www.youtube.com" title="youtube" style="--clr:#f00"><i class="fab fa-youtube"></i></a>
+              <a href="https://www.twitter.com" title="twitter" style="--clr:#00a0dc"><i class="fab fa-twitter"></i></a>
+              <a href="https://www.linkedin.com" title="linkedin" style="--clr:#114a66"><i class="fab fa-linkedin"></i></a>
+            </div>
+          </div>
+
+          <div class="col" id="services">
+            <h3>Services</h3>
+            <div class="links">
+              <a href="#travel">Travel</a>
+              <a href="#">Outside Tourism</a>
+              <a href="#">Trips</a>
+              <a href="#">Domestic Tourism</a>
+            </div>
+          </div>
+
+          <div class="col" id="useful-links">
+            <h3>Links</h3>
+            <div class="links">
+              <a href="./pages/shop/shop.html">Shop</a>
+              <a href="./pages/blog/blog.html">Blog</a>
+              <a href="./pages/about/about.html">About Us</a>
+              <a href="./pages/contact/contact.html">Contact Us</a>
+            </div>
+          </div>
+
+          <div class="col" id="contact">
+            <h3>Contact</h3>
+            <div class="contact-details">
+              <i class="fa fa-location"></i>
+              <p>
+                Shebeen - Menoufia - Egypt
+              </p>
+            </div>
+            <div class="contact-details">
+              <i class="fa fa-phone"></i>
+              <p>+20 1069641013</p>
+            </div>
+            <div class="contact-details">
+              <i class="fa-solid fa-envelope fa-xs"></i>
+              <p>safarnee@gmail.com</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-con">
+            <form action="">
+              <input type="email" placeholder="Email here..." required/>
+              <button class="btn" title="Send"><i class="fa fa-paper-plane"></i></button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="flag-clr"></div>
+      <div class="flag"></div>
+    </footer>
+    <!-- End footer -->
