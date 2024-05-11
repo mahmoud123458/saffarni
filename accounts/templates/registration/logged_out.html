@@ -1,0 +1,17 @@
+{% extends "base_generic.html" %}
+
+{% block body %}
+  <p>Logged out!</p>
+  <form action="{% url 'login' %}" method="POST">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-login  ">
+      LOGIN <i class="fas fa-arrow-alt-circle-left"></i>
+    </button>
+  </form>
+  <form action="{% url 'accounts:signup' %}">
+    <p>
+      don't have acount?
+      <a href="{% url 'accounts:signup' %}" >Sign Up</a>
+    </p>
+  </form>
+{% endblock %}

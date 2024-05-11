@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block add %}
+<link rel="stylesheet" href="{% static 'CSS/contact.css' %}">
+{% endblock add %}
+
+  {% block content %}
+
+    <!-- Start landing section -->
+    <!-- End landing section  -->
+    
+    <!-- Start Features -->
+    <div class="features">
+        <div class="container">
+          <div class="feat">
+            <i class="fa-solid fa-location-dot"></i>
+            <h3>Location</h3>
+            <h5>Travel Agency</h5>
+            <p>
+              {{myinfo.place}}
+            </p>
+            <h5>Travel Agency</h5>
+            <p>
+              {{myinfo2.place}}
+            </p>
+          </div>
+
+          <div class="feat">
+            <i class="fa-solid fa-phone"></i>
+            <h3>Give us a call</h3>
+            <h5>Mobile Number</h5>
+            <p>
+              Ahmed Sami "Tour Consultant" :{{myinfo2.phone_number}}
+              <br />
+              Mahmoud Nabil "Local Guide" :{{myinfo.phone_number}}
+            </p>
+            <h5>Office Number</h5>
+            <p>
+              Administration : {{myinfo.phone_number}}
+              <br />
+              Technical Office {{myinfo2.phone_number}}
+            </p>
+          </div>
+
+          <div class="feat">
+            <i class="fa-solid fa-envelope"></i>
+            <h3>Write for anything</h3>
+            <h5>Quotes</h5>
+            <p>
+              Write to this email for a detailed quotation {{myinfo2.email}} and
+              information. elit.
+            </p>
+
+            <h5>Consulting</h5>
+            <p>
+              Our free consultation service can be requested here
+              {{myinfo.email}} every day.
+            </p>
+          </div>
+        </div>
+    </div>
+    <!-- End Features -->
+
+    
+    <!--Start Form -->
+    
+    <div class="parent">
+      <div class="form">
+        <h1>Get in Touch</h1>
+        <p>
+          Write to us for personalized travel advice or for information on
+          group travel <br />and <span>last minute travel</span>, all travel
+          is insured and safe.
+        </p>
+        <form method="POST">
+          {% csrf_token %}
+        <div>
+          <input class="foc" name="subject" type="text" placeholder="Enter Subject" required/>
+        </div>
+        <br />
+        <div>
+          <input class="foc" name="email" type="email" placeholder="Enter your email" required/>
+        </div>
+        <br />
+        <div>
+          <textarea
+            name="message"
+            cols="76"
+            rows="4"
+            placeholder="Your message"
+          ></textarea>
+        </div>
+        <br />
+        <div>
+          <input class="btn" type="submit" value="Submit" />
+        
+        </div>
+      </form>
+      </div>
+    
+      <!-- End Form -->
+
+      <!-- Start Map -->
+      {% comment %} <iframe
+        title="map"
+        class="map"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d55251.33663472039!2d31.299664111678084!3d30.05955631696473!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14583fa60b21beeb%3A0x79dfb296e8423bba!2z2KfZhNmC2KfZh9ix2KnYjCDZhdit2KfZgdi42Kkg2KfZhNmC2KfZh9ix2KnigKw!5e0!3m2!1sar!2seg!4v1701697920693!5m2!1sar!2seg"
+        style="border: 0"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
+      <!-- End Map --> {% endcomment %}
+    </div>
+
+
+
+
+
+    {% endblock content %}

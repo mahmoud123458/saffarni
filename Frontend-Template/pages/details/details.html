@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Render All Elements Normally -->
+    <link rel="stylesheet" href="../../CSS/normalize.css" />
+    <!-- Font Awesome Library -->
+    <link rel="stylesheet" href="../../CSS/all.min.css" />
+    <!-- Main Template CSS File -->
+    <link rel="stylesheet" href="../../CSS/style.css" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&#038;display=swap"
+      rel="stylesheet" />
+    <!-- Main Template CSS File For Page -->
+    <link rel="stylesheet" href="../details/details.css" />
+    <title>Safarnee</title>
+  </head>
+  <body>
+    <!-- Start Header  -->
+    <header id="header">
+      <div class="container">
+        <a href="#" class="logo" title="Safarnee">Safarnee</a>
+        <nav>
+          <i
+            class="fas fa-bars toggle-menu"
+            onClick="showBar()"
+            id="toggle-menu-btn"></i>
+          <ul class="main-nav">
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/pages/shop/shop.html">Shop</a></li>
+            <li><a href="/pages/blog/blog.html">Blog</a></li>
+            <li><a href="/pages/about/about.html">About</a></li>
+            <li><a href="/pages/contact/contact.html">Contact</a></li>
+          </ul>
+          <img
+            src="../../images/palstineFlag.png"
+            alt="free palestine"
+            title="#Free Palestine" />
+        </nav>
+      </div>
+    </header>
+    <!-- End Header  -->
+
+    <!-- Start Details  Package -->
+    <div class="package">
+      <img src="/images/box-3.jpeg" alt="" />
+      <div class="container">
+        <div class="details">
+          <h3>Crete</h3>
+          <span>Greece</span>
+
+          <h2>Enjoy The Advance</h2>
+          <p>
+            Are you looking for an adventure of a lifetime? Join us on an
+            unforgettable journey through some of the world's most stunning
+            landscapes and cultural destinations. Our expertly curated tours
+            take you to incredible destinations, from the rugged mountains of
+            Patagonia to the vibrant cities of Asia. Our itineraries are
+            designed to immerse you in the local culture, with opportunities to
+            meet locals, try new foods, and learn about the history and
+            traditions of each destination. Our experienced guides will lead you
+            through each destination, sharing their knowledge and passion for
+            travel. We offer a range of activities to suit every traveler, from
+            hiking and kayaking to cultural tours and culinary experiences.<br /><br />
+            Our accommodations are carefully selected for comfort and
+            convenience, with options to suit every budget. Whether you prefer
+            luxurious hotels or cozy home_stays, we have something for everyone.
+            At every step of the journey, we prioritize sustainability and
+            responsible tourism. We work with local communities to ensure that
+            our tours have a positive impact on the environment and the people
+            we meet along the way. Join us on a journey of discovery and
+            exploration, and discover the world's most incredible destinations
+            with us.
+          </p>
+        </div>
+        <div class="forms">
+          <div class="prices">
+            <div>
+              <span>Price</span>
+              <h4>From</h4>
+            </div>
+            <div>
+              <h3>1000</h3>
+            </div>
+          </div>
+          <div class="select">
+            <button id="bookForm" class="active" onclick="bookFun()">
+              Booking Form
+            </button>
+            <hr />
+            <button id="enquiryForm" onclick="enquiryFun()">
+              Enquiry Form
+            </button>
+          </div>
+
+          <div id="formBook" class="show">
+            <div class="date">
+              <h4>Date</h4>
+              <span>02-5-2024</span>
+            </div>
+            <div class="adults">
+              <div class="adult">
+                <h4>Adults</h4>
+                <span>Over 18 ( 1000 EG )</span>
+              </div>
+              <div class="count">
+                <span> + </span>
+                <span class="num">1</span>
+                <span> - </span>
+              </div>
+            </div>
+            <div class="child">
+              <div class="children">
+                <h4>Adults</h4>
+                <span>Under 18 ( 600 EG )</span>
+              </div>
+              <div class="count">
+                <span> + </span>
+                <span class="num">0</span>
+                <span> - </span>
+              </div>
+            </div>
+            <div class="chickBox">
+              <h4>Extra Services</h4>
+              <span>Add extra services on your reservation</span>
+              <div class="chick1">
+                <input type="checkbox" id="b1" name="moreService" />
+                <label for="b1">Health ( 2000 EG )</label>
+              </div>
+              <div class="chick2">
+                <input type="checkbox" id="b2" name="moreService" />
+                <label for="b2">Health ( 2000 EG )</label>
+              </div>
+            </div>
+            <input type="submit" value="Book now for 1000  EG" class="btn" />
+          </div>
+
+          <form id="formEnquiry">
+            <input
+              type="text"
+              class="in"
+              placeholder="Crete - ID: 152"
+              readonly />
+            <input
+              type="text"
+              class="in"
+              placeholder="Enter your name and surname"
+              autofocus
+              required />
+            <input
+              type="email"
+              class="in"
+              placeholder="Enter your email"
+              required />
+            <textarea
+              type="text"
+              class="in"
+              rows="4"
+              placeholder="Your Message..."></textarea>
+            <input type="submit" value="Send Request" class="btn" />
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- End Details Package -->
+
+    <!-- Start Footer -->
+    <footer>
+      <div class="container-footer">
+        <div class="row box">
+          <div class="col" id="company">
+            <a href="./index.html" class="logo footer" title="Safarnee"
+              >Safarnee</a
+            >
+            <p>Travel beyond your imagination, with our Travel Agency!</p>
+            <div class="social">
+              <a
+                href="https://www.facebook.com"
+                title="facebook"
+                style="--clr: #1877f2"
+                ><i class="fab fa-facebook"></i
+              ></a>
+              <a
+                href="https://www.instagram.com"
+                title="instagram"
+                style="--clr: #c32aa3"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a
+                href="https://www.youtube.com"
+                title="youtube"
+                style="--clr: #f00"
+                ><i class="fab fa-youtube"></i
+              ></a>
+              <a
+                href="https://www.twitter.com"
+                title="x-twitter"
+                style="--clr: #e7e9ea"
+                ><i class="fa-brands fa-x-twitter"></i
+              ></a>
+
+              <a
+                href="https://www.linkedin.com"
+                title="linkedin"
+                style="--clr: #114a66"
+                ><i class="fab fa-linkedin"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="col" id="services">
+            <h3>Services</h3>
+            <div class="links">
+              <a href="#travel">Travel</a>
+              <a href="#">Outside Tourism</a>
+              <a href="#">Trips</a>
+              <a href="#">Domestic Tourism</a>
+            </div>
+          </div>
+
+          <div class="col" id="useful-links">
+            <h3>Links</h3>
+            <div class="links">
+              <a href="../shop/shop.html">Shop</a>
+              <a href="../blog/blog.html">Blog</a>
+              <a href="../about/about.html">About Us</a>
+              <a href="../contact/contact.html">Contact Us</a>
+            </div>
+          </div>
+
+          <div class="col" id="contact">
+            <h3>Contact</h3>
+            <div class="contact-details">
+              <i class="fa fa-location"></i>
+              <p>Shebeen - Menoufia - Egypt</p>
+            </div>
+            <div class="contact-details">
+              <i class="fa fa-phone"></i>
+              <p>+20 1069641013</p>
+            </div>
+            <div class="contact-details">
+              <i class="fa-solid fa-envelope fa-xs"></i>
+              <p>safarnee@gmail.com</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-con">
+            <form action="">
+              <input type="email" placeholder="Email here..." required />
+              <button class="btn" title="Send">
+                <i class="fa fa-paper-plane"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="flag-clr"></div>
+      <div class="flag"></div>
+    </footer>
+    <!-- End footer -->
+
+    <!--*  Java Script  *-->
+    <script src="../../main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,55 @@
+ {% extends "base.html" %}
+ {% load bootstrap4 %}
+ {% load static %}
+ {% block add %}
+ <link rel="stylesheet" href="{% static 'CSS/search.css' %}">
+ {% endblock add %}
+ {% block content %}
+ <!--   Start Search  -->
+ <div class="parent">
+    <div class="container">
+        <div class="cards">
+            {% for hotel in hotels %}
+            <div class="card">
+                <img class="card-img-top" src="{{hotel.image.url}}" alt="Card image cap" />
+                <div class="card-body">
+                    <h5 class="card-title">{{hotel.name}}</h5>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <br />
+                    <i class="fa-solid fa-location-dot"></i>
+                    <p class="card-text">{{hotel.country}} - {{hotel.address}}</p>
+
+                    <ul>
+                        <li>{{hotel.features1}}</li>
+                        <li>{{hotel.features2}}</li>
+                        <li>{{hotel.features3}}</li>
+                    </ul>
+
+                    <hr />
+                    <p class="price">price : {{hotel.price}} EG</p>
+                    <button class="btn btn-search" type="button">Book Now</button>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+                  <!--  Start Checkboxes  -->
+                  <form method="GET">
+                    {% bootstrap_form myfilter.form %} 
+                    {% buttons %}
+                        <button type="submit" class="btn btn-primary btn-lg btn-block">Filter</button>
+                    {% endbuttons %}
+                </form>
+                
+
+    </div>
+</div>
+<!-- End Checkboxes  -->
+
+
+
+{% endblock content %}

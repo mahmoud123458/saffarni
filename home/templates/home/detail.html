@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block add %}
+<link rel="stylesheet" href="{% static 'CSS/details.css' %}">
+<script src="{% static 'js/details.js' %}"></script>
+{% endblock add %}
+{% block content %}
+
+ 
+  <!-- Start Details  Package -->
+  <div class="package">
+    <img src="{{place.image.url}}" alt="" />
+    <div class="container">
+      <div class="details">
+        <h3>Crete</h3>
+        <span>{{place.city}}</span>
+
+        <h2>Enjoy The Advance</h2>
+        <p>
+          {{place.description}}
+        </p>
+      </div>
+      <div class="forms">
+        <div class="select">
+          <button id="bookForm" class="active" onclick="bookFun()">
+            Booking Form
+          </button>
+        </div>
+
+        <div class="prices">
+          <div>
+            <span>Price</span>
+          </div>
+          <div>
+            <h3>{{place.price}}</h3>
+          </div>
+        </div>
+
+        <div id="formBook" class="show">
+          <div class="date">
+            <h4>Date</h4>
+            <span>02-5-2024</span>
+          </div>
+          <div class="adults">
+            <div class="adult">
+              <h4>Adults</h4>
+              <span>Over 18 ( {{place.price}} EG )</span>
+            </div>
+            <div class="count">
+              <button onclick="increaseAdult()">+</button>
+              <span class="num" id="displayAdult">1</span>
+              <button onclick="decreaseAdult()">-</button>
+            </div>
+          </div>
+          <div class="child">
+            <div class="children">
+              <h4>Children</h4>
+              <span>Under 18 ( {{place.half_price }}EG )</span>
+            </div>
+            <div class="count">
+              <button onclick="increaseChild()">+</button>
+              <span class="num" id="displayChild">0</span>
+              <button onclick="decreaseChild()">-</button>
+            </div>
+          </div>
+
+          <p>Total Price:</p>
+          <div class="totalPrice">0</div>
+          <a class="btn btn-primary btn-lg btn-block" target="_blank" type="submit" href="{% url "payment" slug=place.slug  %}">Book now </a>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- End Details Package -->
+
+    {% endblock content %}

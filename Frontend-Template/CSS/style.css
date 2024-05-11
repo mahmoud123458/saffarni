@@ -7,6 +7,8 @@
     --co-inputFiled: #eaffffa1;
     --co-titleForm: #467894;
     --color-116: rgb(116, 116, 116);
+    --clr909090: #909090;
+    --clr-e8e8e8: #e8e8e8;
     --font-fam: Lucida;
     --main-transition: 0.3s;
     --mr-100: 100px;
@@ -14,6 +16,8 @@
     --br-10: 10px;
     --br-7: 7px;
     --br-5: 5px;
+    --pd: 12px 0px;  /* For Book & Enquiry Form */
+    --fs: 17px;
 }
 /** start global rules */
 *{
@@ -116,6 +120,10 @@ a{
     top: 50%;
     border-radius: 50%;
     transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
 }
 .main-title::before{
     left: -30px;
@@ -145,6 +153,7 @@ a{
     padding: 8px 15px;
     cursor: pointer;
     border: none;
+    user-select: none;
     border-radius: var(--br-5);
     transition: var(--main-transition);
 }
@@ -156,42 +165,28 @@ a{
     -ms-transform: scale(.97);
     transform: scale(.97);
 }
-.travel .go-up{
+.scrollUp{
     position: fixed;
-    right: 5%;
-    bottom: 50px;
-    display: block;
-    width: 40px;
-    height: 40px;
+    right: 25px;
+    bottom: 30px;
+    display: none;
     background-color: var(--main-color);
     border: none;
+    cursor: pointer;
     border-radius: var(--br-5);
-    -webkit-transition: var(--main-transition);
-    -moz-transition: var(--main-transition);
-    -ms-transition: var(--main-transition);
-    -o-transition: var(--main-transition);
     transition: var(--main-transition);
+    z-index: 500;
 }
-.travel .go-up:hover{
+.scrollUp:hover{
     background-color: var(--secondary-color);
 }
-.travel .go-up i{
+.scrollUp i{
     color: #fff;
-    padding: 10px;
+    padding: 7px;
 }
 @media (max-width: 768px) {
-    .travel .go-up{
-        width: 8px;
-        right: 2%;
-    }
-    .travel .go-up i{
+    .scrollUp{
         display: none;
-    }
-    .travel .go-up:hover{
-        width: 40px;
-    }
-    .travel .go-up:hover i{
-        display: block;
     }
 }
 /** End Component */
@@ -379,11 +374,11 @@ header nav img:hover{
     font-size: 25px;
     color: #fff;
     background-color: var(--main-color);
-    border: 1.5px solid var(--main-color);
-    border-radius: var(--br-10);
+    border-top-right-radius: var(--br-10);
+    border-bottom-left-radius: var(--br-10);
     top: 0px;
     right: 0px;
-    padding: 2px 4px;
+    padding: 3px 5px;
     cursor: pointer;
 }
 .login-form form,
@@ -424,6 +419,13 @@ header nav img:hover{
 .login-form form .box:focus,
 .register-form form .box:focus{
     outline: none;
+}
+.login-form form .rem,
+.register-form form .rem{
+    padding: 5px;
+    margin: 0;
+    width: 20px;
+    height: 16px;
 }
 .login-form form .btn,
 .register-form form .btn{
@@ -690,6 +692,8 @@ header nav img:hover{
     border-top: 1px solid #ebebeb;
     border-bottom: 1px solid #ebebeb;
     padding: 20px 0;
+    font-size: 17px;
+    color: var(--clr909090);
 }
 .travel .box .package .price{
     display: flex;
@@ -712,19 +716,16 @@ header nav img:hover{
 /* Request Form */
 .travel .request{
     position: relative;
-    left: 50%;
     top: 50%;
+    left: 50%;
     transform: translate(-50%, -140%);
+    max-width: calc(100% - 100px);
     /*background-color: #fff4e1 #e1fffa;
     */background-color: #ffe1e1;
     display: none;
     align-items: center;
-    max-width: calc(100% - 20%);
     border-radius: var(--br-10);
-    -webkit-transform: translate(-50%, -140%);
-    -moz-transform: translate(-50%, -140%);
-    -ms-transform: translate(-50%, -140%);
-    -o-transform: translate(-50%, -140%);
+    z-index: 500;   
 }
 .request.reqActive{
     display: block;
@@ -758,12 +759,15 @@ header nav img:hover{
     flex-wrap: wrap;
     align-items: center;
 }
-.travel .request form label,input, textarea{
+.travel .request form input, textarea{
     width: 100%;
     background-color: #ffeafb;
     padding: 10px;
-    color: #939393;
+    color: #1c1c1c;
 
+}
+.travel .request form .readonly{
+    width: 100%;
 }
 .travel .request form input, textarea{
     border: 0;
@@ -775,7 +779,7 @@ header nav img:hover{
 .travel .request form input{
     width: 49.3%;
 }
-@media (max-width: 995px) {
+@media (max-width: 1025px) {
     .travel .request form input{
         width: 100%;
     }
@@ -785,7 +789,7 @@ header nav img:hover{
     padding: 15px 20px;
     color: #fff;
     margin: 15px 0;
-    background-color: #ff55ff;
+    background-color: #f5f;
 }
 
 /** End Travel */

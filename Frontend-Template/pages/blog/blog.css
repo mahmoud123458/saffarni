@@ -24,7 +24,7 @@ html{
     margin: 0;
     font-weight: bold;
     font-size: 50px;
-    color: #5caff1;
+    color: var(--main-color);
 }
 .container{
     display: grid;

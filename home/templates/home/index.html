@@ -1,0 +1,280 @@
+{% extends 'base.html' %}
+{% load static %}
+  {% block content %}
+    <!-- Start Landing -->
+    <div class="landing">
+      <div class="img_bg">
+        <div class="container">
+          <div class="text">
+            <h1><span>Adventure</span> & Experience The Travel!</h1>
+          </div>
+          <div class="image img-up">
+            <img src="{% static 'images/land-1.jpg' %}" alt="landing" />
+          </div>
+          <div class="image img-down">
+            <img src="{% static 'images/land-3.jpeg' %}" alt="landing" />
+          </div>
+          <a href="#travel" class="go-down" title="go-down">
+            <i class="fa-solid fa-angles-down fa-xl"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- End Landing -->
+
+    <!-- Start Traveling -->
+    <div class="travel" id="travel">
+      <h2 class="main-title">travel</h2>
+      <div class="container">
+        <div class="textures">
+          <div class="text">
+            <h4>Dream Vacation Destination</h4>
+            <h1>Plan the Trip of a Lifetime with Ease</h1>
+            <p>
+              Whether you're looking for a romantic getaway, a family-friendly
+              adventure, or a solo journey to explore the world, a travel agency
+              can provide you with a custom-tailored itinerary that exceeds your
+              expectations.
+            </p>
+            <button class="btn">More Info</button>
+          </div>
+        </div>
+
+        <!-- Box banner -->
+        <div class="box">
+          <div class="banner">
+            <img src="{% static './images/c-icon-visual-01.gif' %}" class="gif" alt="" />
+            <p>City Walks Tour</p>
+            <img src="{% static './images/d-banner-01.jpeg' %}" alt="banner-1" />
+          </div>
+          <div class="banner">
+            <img src="{% static './images/c-icon-visual-02.gif' %}" class="gif" alt="" />
+            <p>Electric Bikes</p>
+            <img src="{% static './images/d-banner-02.jpeg' %}" alt="banner-2" />
+          </div>
+          <div class="banner">
+            <img src="{% static './images/c-icon-visual-03.gif' %}" class="gif" alt="" />
+            <p>Skyscrapers View</p>
+            <img src="{% static './images/d-banner-03.jpeg' %}" alt="banner-3" />
+          </div>
+        </div>
+
+        <div class="box">
+          {% for place in places %}
+          {% if place.id < 4 %}
+          <div class="package box-1">
+            <a href="{% url 'detail' slug=place.slug %}">
+            <div class="image">
+              <img src="{{place.image.url}}" alt="" />
+            </div>
+          </a>
+            <div class="time">
+              <i class="fa-sharp fa-solid fa-clock fa-xs"></i>
+              <span>{{place.duration}} {{place.period}}</span>
+              <i
+                class="fa-solid fa-envelope fa-xs"
+                onClick="showFormRequest()"
+              ></i>
+              <a href="#" title="map"
+                ><i class="fa-solid fa-map-location-dot fa-xs"></i
+              ></a>
+            </div>
+            <div class="text">
+              <h3>{{place.city}}</h3>
+              <!-- city name -->
+              <p class="location">{{place.country}}</p>
+               <!-- continent name -->
+               <p><i class="fa-solid fa-earth-africa" style="color: #54e894;"></i> {{place.continent}}</p>
+             
+              <!-- country name -->
+              <p class="description">
+                {{place.description}}
+              </p>
+              <div class="price">
+                <a href="{% url 'detail' slug=place.slug %}">
+                <button class="btn">Details</button>
+              </a>
+                <p>EGP {{place.price}} <span>EGP {{place.discount}}</span></p>
+              </div>
+            </div>
+          </div>
+          {% endif %}
+          {% endfor %}
+        </div>
+
+        <div class="request">
+          <i class="fas fa-times" onclick="hideRequest()"></i>
+          <h3>Pre Sales Request</h3>
+          <p>Fill free to contact us for any additional information</p>
+          <form action="">
+            <input
+              type="text"
+              readonly
+              class="readonly"
+              placeholder="ID: 152"
+              readonly
+            />
+            <input
+              type="text"
+              placeholder="Enter your name"
+              autofocus
+              required
+            />
+            <input type="text" placeholder="Enter your surname" />
+            <input type="email" placeholder="Enter your email" required />
+            <input
+              type="number"
+              placeholder="Enter your phone"
+              min="0"
+              required
+            />
+            <input type="date" placeholder="mm/dd/yyyy" />
+            <input
+              type="number"
+              placeholder="Enter number guests"
+              min="0"
+              required
+            />
+            <textarea
+              type="text"
+              rows="4"
+              placeholder="Your Message..."
+            ></textarea>
+            <input type="submit" value="Submit" class="btn" />
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- End Traveling -->
+
+    <!-- Start Book -->
+    <div class="book" id="book">
+      <h2 class="main-title">Book</h2>
+      <div class="container">
+        <h4>Choose your Trip</h4>
+        <h1>Start your Vacation Now</h1>
+        <p>
+          Looking for your dream vacation destination but don't know where to
+          start? With the help of experienced and knowledgeable travel agents,
+          you can plan the trip of a lifetime with ease.
+        </p>
+        <div class="search">
+          <form action="">
+            <!-- Start Source -->
+            <div class="source">
+              <i class="fa-solid fa-plane-departure"></i>
+              <input list="source" name="source" placeholder="Source" required />
+              <datalist id="source">
+                <option value="Egypt"></option>
+                <option value="Cairo International Airport"></option>
+              </datalist>
+            </div>
+  
+            <!-- Start Destination -->
+            <div class="dest">
+              <i class="fa-solid fa-plane-arrival"></i>
+              <input list="destination" name="destination" placeholder="Destination" required />
+              <datalist id="destination">
+                <optgroup label="Africa">
+                  <option value="Algeria">Algeria</option>
+                  <option value="Morocco">Morocco</option>
+                  <option value="Tunisia">Tunisia</option>
+                  <option value="South Africa">South Africa</option>
+                </optgroup>
+                <optgroup value="Asia">
+                  <option value="The UAE">The UAE</option>
+                  <option value="Saudi Arabia">Saudi Arabia</option>
+                  <option value="Qatar">Qatar</option>
+                  <option value="Japan">Japan</option>
+                  <option value="China">China</option>
+                </optgroup>
+                <optgroup label="Europe">
+                  <option value="France">France</option>
+                  <option value="Germany">Germany</option>
+                  <option value="Greece">Greece</option>
+                  <option value="Spain">Spain</option>
+                  <option value="Italy">Italy</option>
+                </optgroup>
+                <optgroup label="America">
+                  <option value="USA">USA</option>
+                  <option value="Mexico">Mexico</option>
+                  <option value="Argentina">Argentina</option>
+                </optgroup>
+              </datalist>
+            </div>
+  
+            <!-- Start Date -->
+            <div class="date">
+              <i class=" fa-solid fa-calendar-days"></i>
+              <input id="date" type="date" tooltip="Today">
+            </div>
+  
+            <!-- Start Class -->
+            <div class="class">
+              <i class="fa-solid fa-list-ul"></i>
+              <input list="economicClass" name="class" placeholder="Economic Class" required />
+              <datalist id="economicClass">
+                <option value="First Class"></option>
+                <option value="Business Class"></option>
+                <option value="Premium Economy"></option>
+                <option value="Economy Class"></option>
+              </datalist>
+            </div>
+            <a class="btn" type="submit" href="{% url "shop" %}">Submit</a>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- End Book -->
+
+    <!-- Start Travel Destinations -->
+    <div class="spikes">
+      <div class="travelDestinations">
+        <div class="container">
+          <div class="text">
+            <h4>Next Adventure</h4>
+            <h1>Travel Destinations Available Worldwide</h1>
+            <p>
+              We have compiled a list of top destinations across the globe,
+              scoured the world for the most alluring and fascinating places to
+              visit. From the beautiful beaches of the Caribbean to the majestic
+              mountains of Europe and the vibrant cities of Asia, our
+              destination list has something for everyone.
+            </p>
+          </div>
+          <div class="cards">
+            <div class="card card1">
+              <div class="info">
+                <h3>Africa</h3>
+                <p>Embark on a journey for your lifetime</p>
+                <button class="btn">All Packages</button>
+              </div>
+            </div>
+            <div class="card card2">
+              <div class="info">
+                <h3>Asia</h3>
+                <p>Embark on a journey for your lifetime</p>
+                <button class="btn">All Packages</button>
+              </div>
+            </div>
+            <div class="card card3">
+              <div class="info">
+                <h3>Europe</h3>
+                <p>Embark on a journey for your lifetime</p>
+                <button class="btn">All Packages</button>
+              </div>
+            </div>
+            <div class="card card4">
+              <div class="info">
+                <h3>America</h3>
+                <p>Embark on a journey for your lifetime</p>
+                <button class="btn">All Packages</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End Travel Destinations -->
+
+   {% endblock content %}
