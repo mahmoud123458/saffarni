@@ -31,7 +31,7 @@
 
                     <hr />
                     <p class="price">price : {{hotel.price}} EG</p>
-                    <button class="btn btn-search" type="button">Book Now</button>
+                    <a class="btn btn-primary btn-lg btn-block" target="_blank" type="submit" href="{% url "payment" slug=hotel.slug  %}">Book now </a>
                 </div>
             </div>
             {% endfor %}

@@ -20,6 +20,19 @@ period=[
     ('Months','Months'),
 ]
 
+source=[
+    ('Egypt','Egypt'),
+    ('Cairo International Airport','Cairo International Airport'),
+    
+]
+
+flight_class=[
+    ('FirstClass','FirstClass'),
+    ('BusnissClass','BusnissClass'),
+    ('PremiumClass','PremiumClass'),
+    ('EconomyClass','EconomyClass'),
+
+]
 
 class Place(models.Model):
     city = models.CharField(max_length=30)
@@ -31,6 +44,11 @@ class Place(models.Model):
     discount=models.DecimalField(max_digits=8, decimal_places=2)
     period=models.CharField(max_length=30,choices=period)
     duration=models.IntegerField(null=True,blank=True)
+    crete_id=models.IntegerField(default=1)
+    source=models.CharField( max_length=50,choices=source) 
+    date=models.DateField(auto_now=True, auto_now_add=False)
+    flight_class=models.CharField(max_length=50,choices=flight_class)
+
     
     slug=models.SlugField(blank=True,null=True)
     
@@ -47,3 +65,10 @@ class Place(models.Model):
     def __str__(self):
         return self.city
     
+
+class Continent(models.Model):
+    name=models.CharField(max_length=50,choices=continent)
+
+        
+    def __str__(self):
+        return self.name

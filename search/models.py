@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.text import slugify
 
 # Create your models here.
 def image_upload2(instance,filename):
@@ -28,6 +29,13 @@ class Hotel(models.Model):
     features2=models.CharField( max_length=50,choices=features)
     features3=models.CharField( max_length=50,choices=features)
     price = models.DecimalField(max_digits=8, decimal_places=2)
+
+    slug=models.SlugField(blank=True,null=True)
+    
+
+    def save(self,*args, **kwargs):
+        self.slug=slugify(self.name)
+        super(Hotel,self).save(*args, **kwargs)
 
     def __str__(self):
         return self.name

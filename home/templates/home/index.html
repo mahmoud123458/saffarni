@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load bootstrap4 %}
 {% load static %}
   {% block content %}
     <!-- Start Landing -->
@@ -158,71 +159,53 @@
           start? With the help of experienced and knowledgeable travel agents,
           you can plan the trip of a lifetime with ease.
         </p>
-        <div class="search">
-          <form action="">
-            <!-- Start Source -->
-            <div class="source">
+      
+      <div class="search">
+        <form action="{% url 'search_flights' %}" method="POST">
+          {% csrf_token %}
+          <!-- Start Source -->
+          <div class="source">
               <i class="fa-solid fa-plane-departure"></i>
               <input list="source" name="source" placeholder="Source" required />
               <datalist id="source">
-                <option value="Egypt"></option>
-                <option value="Cairo International Airport"></option>
+                  <option value="Egypt"></option>
+                  <option value="Cairo International Airport"></option>
               </datalist>
-            </div>
-  
-            <!-- Start Destination -->
-            <div class="dest">
+          </div>
+      
+          <!-- Start Destination -->
+          <div class="dest">
               <i class="fa-solid fa-plane-arrival"></i>
-              <input list="destination" name="destination" placeholder="Destination" required />
-              <datalist id="destination">
-                <optgroup label="Africa">
-                  <option value="Algeria">Algeria</option>
-                  <option value="Morocco">Morocco</option>
-                  <option value="Tunisia">Tunisia</option>
-                  <option value="South Africa">South Africa</option>
-                </optgroup>
-                <optgroup value="Asia">
-                  <option value="The UAE">The UAE</option>
-                  <option value="Saudi Arabia">Saudi Arabia</option>
-                  <option value="Qatar">Qatar</option>
-                  <option value="Japan">Japan</option>
-                  <option value="China">China</option>
-                </optgroup>
-                <optgroup label="Europe">
-                  <option value="France">France</option>
-                  <option value="Germany">Germany</option>
-                  <option value="Greece">Greece</option>
-                  <option value="Spain">Spain</option>
-                  <option value="Italy">Italy</option>
-                </optgroup>
-                <optgroup label="America">
-                  <option value="USA">USA</option>
-                  <option value="Mexico">Mexico</option>
-                  <option value="Argentina">Argentina</option>
-                </optgroup>
-              </datalist>
-            </div>
-  
-            <!-- Start Date -->
-            <div class="date">
+              <select name="destination" required>
+                  <option value="" selected disabled hidden>Choose destination</option>
+                  {% for place in places %}
+                      <option value="{{ place.country }}">{{ place.country }}</option>
+                  {% endfor %}
+              </select>
+          </div>
+      
+          <!-- Start Date -->
+          <div class="date">
               <i class=" fa-solid fa-calendar-days"></i>
-              <input id="date" type="date" tooltip="Today">
-            </div>
-  
-            <!-- Start Class -->
-            <div class="class">
+              <input type="date" name="date" required />
+          </div>
+      
+          <!-- Start Class -->
+          <div class="class">
               <i class="fa-solid fa-list-ul"></i>
               <input list="economicClass" name="class" placeholder="Economic Class" required />
               <datalist id="economicClass">
-                <option value="First Class"></option>
-                <option value="Business Class"></option>
-                <option value="Premium Economy"></option>
-                <option value="Economy Class"></option>
+                  <option value="First Class"></option>
+                  <option value="Business Class"></option>
+                  <option value="Premium Economy"></option>
+                  <option value="Economy Class"></option>
               </datalist>
-            </div>
-            <a class="btn" type="submit" href="{% url "shop" %}">Submit</a>
-          </form>
+          </div>
+          <button type="submit" class="btn">Search</button>
+      </form>
+      
         </div>
+      
       </div>
     </div>
     <!-- End Book -->
@@ -237,44 +220,53 @@
             <p>
               We have compiled a list of top destinations across the globe,
               scoured the world for the most alluring and fascinating places to
-              visit. From the beautiful beaches of the Caribbean to the majestic
+              visit. From the beautifulttttttt beaches of the Caribbean to the majestic
               mountains of Europe and the vibrant cities of Asia, our
               destination list has something for everyone.
             </p>
           </div>
+          
           <div class="cards">
+            {% for place in places %}
             <div class="card card1">
               <div class="info">
-                <h3>Africa</h3>
+                <h3>{{place.name}}</h3>
                 <p>Embark on a journey for your lifetime</p>
-                <button class="btn">All Packages</button>
+                <button class="btn" id="all-packages-btn">All Packages</button>
+
               </div>
             </div>
-            <div class="card card2">
-              <div class="info">
-                <h3>Asia</h3>
-                <p>Embark on a journey for your lifetime</p>
-                <button class="btn">All Packages</button>
-              </div>
-            </div>
-            <div class="card card3">
-              <div class="info">
-                <h3>Europe</h3>
-                <p>Embark on a journey for your lifetime</p>
-                <button class="btn">All Packages</button>
-              </div>
-            </div>
-            <div class="card card4">
-              <div class="info">
-                <h3>America</h3>
-                <p>Embark on a journey for your lifetime</p>
-                <button class="btn">All Packages</button>
-              </div>
-            </div>
+            {% endfor %}
           </div>
         </div>
       </div>
     </div>
     <!-- End Travel Destinations -->
 
+    <script>
+      document.getElementById('destination-select').addEventListener('change', function() {
+        var selectedCountry = this.value;
+        document.getElementById('destination-input').value = selectedCountry;
+      });
+    </script>
+
+<script>
+  document.querySelectorAll('.btn').forEach(function(button) {
+    button.addEventListener('click', function() {
+      var cards = document.querySelectorAll('.card');
+      var selectedContinent = this.parentElement.querySelector('h3').innerText.toLowerCase();
+  
+      cards.forEach(function(card) {
+        var cardContinent = card.querySelector('h3').innerText.toLowerCase();
+        if (selectedContinent === cardContinent) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+  
+</script>
+    
    {% endblock content %}

@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'search',
     'bootstrap4',
     'django_filters',
+    
 ]
 
 MIDDLEWARE = [

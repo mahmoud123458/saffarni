@@ -37,4 +37,12 @@ function calculateTotalPrice() {
     var childCount = parseInt(document.getElementById('displayChild').innerHTML);
     var totalPrice = price * adultCount + (price / 2) * childCount;
     document.querySelector('.totalPrice').innerHTML = totalPrice.toFixed(2);
+    
+    // Update the hidden input field with the total price
+    document.getElementById('total-price-input').value = totalPrice.toFixed(2);
 }
+
+// Call calculateTotalPrice when the page loads to initialize the total price
+document.addEventListener('DOMContentLoaded', function() {
+    calculateTotalPrice();
+});

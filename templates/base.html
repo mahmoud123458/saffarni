@@ -45,19 +45,25 @@
           ></i>
           <ul class="main-nav">
             <li>
-              <a href="{% url 'home' %}" class="active home-link">Home</a>
-              <!-- <ul class="links">
-                <li><a href="#travel">Travel</a></li>
-                <li><a href="#book">Book</a></li>
-              </ul> -->
+              <a href="{% url 'home' %}" class="{% if request.path == '/' %}active{% endif %}">Home</a>
             </li>
-            <li><a href="{% url 'shop' %}">Shop</a></li>
-            <li><a href="{% url 'blog' %}">Blog</a></li>
-            <li><a href="{% url 'about' %}">About</a></li>
-            <li><a href="{% url 'contact' %}">Contact</a></li> 
-            <li><a href="{% url 'search' %}">Hotels</a></li>
-
+            <li>
+              <a href="{% url 'shop' %}" class="{% if request.path == '/shop/' %}active{% endif %}">Shop</a>
+            </li>
+            <li>
+              <a href="{% url 'blog' %}" class="{% if request.path == '/blog/' %}active{% endif %}">Blog</a>
+            </li>
+            <li>
+              <a href="{% url 'about' %}" class="{% if request.path == '/about/' %}active{% endif %}">About</a>
+            </li>
+            <li>
+              <a href="{% url 'contact' %}" class="{% if request.path == '/contact/' %}active{% endif %}">Contact</a>
+            </li>
+            <li>
+              <a href="{% url 'search' %}" class="{% if request.path == '/search/' %}active{% endif %}">Hotels</a>
+            </li>
           </ul>
+          
         {% if request.user.is_authenticated %}
           <a href="{% url 'accounts:profile' %}">
             <button class="btn btn-login">
@@ -234,5 +240,7 @@
     <script src="{% static './js/details.js' %}"></script> 
     <script src="{% static './js/search.js' %}"></script>
 
+   
+    
   </body>
 </html>

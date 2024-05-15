@@ -1,5 +1,4 @@
 
-
 {% load static %}
 {% block add %}
 <link rel="stylesheet" href="{% static 'CSS/payment.css' %}">
@@ -33,7 +32,7 @@
                 <div class="box">
                     <span>cvv</span>
                     <div class="cvv-box"></div>
-                    <img src="../../images/visa.png" alt="">
+                    <img src="{% static '../static/images/visa.png' %}" alt="">
                 </div>
             </div>
         </div>
@@ -42,17 +41,14 @@
         {% csrf_token %}
             <div class="prices">
                 <div>
-                    <span>Total Price</span>
+                    <span>Price</span>
                 </div>
                 <div>
-                    <h3> 1000 </h3>
+                    <h3> {{place.price}} </h3>
                 </div>
             </div>
 
-            <div class="inputBox">
-                <span>Crete ID</span>
-                <input type="text" placeholder="Crete - ID: 152" readonly>
-            </div>
+           
 
             <div class="inputBox">
                 <span>Your Name</span>
@@ -109,7 +105,8 @@
                     <input type="text" maxlength="4" class="cvv-input">
                 </div>
             </div>
-            <input type="submit" value="Submit" class="submit-btn">
+            <a class="btn btn-primary btn-lg btn-block" target="_blank" type="submit" href="{% url "success"  %}">Payment </a>
+
         </form>
     </div>
 
