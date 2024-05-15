@@ -166,7 +166,7 @@
           <!-- Start Source -->
           <div class="source">
               <i class="fa-solid fa-plane-departure"></i>
-              <input list="source" name="source" placeholder="Source" required />
+              <input list="source" name="source" placeholder="Source"  />
               <datalist id="source">
                   <option value="Egypt"></option>
                   <option value="Cairo International Airport"></option>
@@ -175,7 +175,7 @@
       
           <!-- Start Destination -->
           <div class="dest">
-              <i class="fa-solid fa-plane-arrival"></i>
+              <i class="fa-solid fa-plane-departure"></i>
               <select name="destination" required>
                   <option value="" selected disabled hidden>Choose destination</option>
                   {% for place in places %}
@@ -187,13 +187,13 @@
           <!-- Start Date -->
           <div class="date">
               <i class=" fa-solid fa-calendar-days"></i>
-              <input type="date" name="date" required />
+              <input type="date" name="date"  />
           </div>
       
           <!-- Start Class -->
           <div class="class">
               <i class="fa-solid fa-list-ul"></i>
-              <input list="economicClass" name="class" placeholder="Economic Class" required />
+              <input list="economicClass" name="class" placeholder="Economic Class"  />
               <datalist id="economicClass">
                   <option value="First Class"></option>
                   <option value="Business Class"></option>
@@ -227,22 +227,67 @@
           </div>
           
           <div class="cards">
-            {% for place in places %}
             <div class="card card1">
               <div class="info">
-                <h3>{{place.name}}</h3>
+                <h3>Africa</h3>
                 <p>Embark on a journey for your lifetime</p>
-                <button class="btn" id="all-packages-btn">All Packages</button>
-
+                <button class="btn">All Packages</button>
               </div>
             </div>
-            {% endfor %}
+            <div class="card card2">
+              <div class="info">
+                <h3>Asia</h3>
+                <p>Embark on a journey for your lifetime</p>
+                <button class="btn">All Packages</button>
+              </div>
+            </div>
+            <div class="card card3">
+              <div class="info">
+                <h3>Europe</h3>
+                <p>Embark on a journey for your lifetime</p>
+                <button class="btn">All Packages</button>
+              </div>
+            </div>
+            <div class="card card4">
+              <div class="info">
+                <h3>America</h3>
+                <p>Embark on a journey for your lifetime</p>
+                <button class="btn">All Packages</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
     <!-- End Travel Destinations -->
+        </div>
+      </div>
+    </div>
+    <!-- End Travel Destinations -->
+  <!-- Start Stats -->
+  {% comment %} <div class="stats ">
+    <h2>Our Awesome Stats</h2>
+    <div class="container ">
+      <div class="box" >
+        <i class="far fa-user fa-2x fa-fw"></i>
+        <span class="number" data-goal="500">500</span>
+        <span class="text">Passenger</span>
+      </div>
+      <div class="box">
+        <i class="fa-solid fa-plane fa-2x fa-fw" aria-hidden="true"></i>
+        <span class="number" data-goal="200">200</span>
+        <span class="text">Flights</span>
+      </div>
+      <div class="box">
+        <i class="fa-solid fa-earth-africa fa-2x fa-fw"></i>
+        <span class="number" data-goal="120">120</span>
+        <span class="text">Counties</span>
+      </div>
 
+    </div>
+
+  </div> {% endcomment %}
+  <!-- End Status -->
     <script>
       document.getElementById('destination-select').addEventListener('change', function() {
         var selectedCountry = this.value;
