@@ -37,18 +37,21 @@
             </div>
         </div>
 
-        <form method="POST">
+        <form method="POST" action="{% url 'success' %}">
         {% csrf_token %}
             <div class="prices">
                 <div>
-                    <span>Price</span>
+                    <span>Total Price</span>
                 </div>
                 <div>
                     <h3> {{place.price}} </h3>
                 </div>
             </div>
 
-           
+            <div class="inputBox">
+                <span>Crete ID</span>
+                <input type="text" placeholder="Crete - ID: {{place.crete_id}}" readonly>
+            </div>
 
             <div class="inputBox">
                 <span>Your Name</span>
@@ -62,12 +65,12 @@
 
             <div class="inputBox">
                 <span>Card Number</span>
-                <input type="text" maxlength="16" class="card-number-input">
+                <input type="text" maxlength="16" class="card-number-input" autofocus required>
             </div>
 
             <div class="inputBox">
                 <span>Card Holder</span>
-                <input type="text" maxlength="15" class="card-holder-input">
+                <input type="text" maxlength="15" class="card-holder-input" autofocus required>
             </div>
             <div class="flexbox">
                 <div class="inputBox">
@@ -105,8 +108,7 @@
                     <input type="text" maxlength="4" class="cvv-input">
                 </div>
             </div>
-            <a class="btn btn-primary btn-lg btn-block" target="_blank" type="submit" href="{% url "success"  %}">Payment </a>
-
+            <input type="submit" value="Payment" class="submit-btn" >
         </form>
     </div>
 

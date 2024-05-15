@@ -37,7 +37,7 @@ def Payment(request, slug):
         # Redirect to a success page or wherever you need to go
         return HttpResponseRedirect(reverse('success.html'))
     else:
-        payment = Hotel.objects.get(slug=slug)
+        payment = Place.objects.get(slug=slug)
         return render(request, 'home/payment.html', {'place': payment})
 
 
