@@ -178,8 +178,8 @@
               <i class="fa-solid fa-plane-departure"></i>
               <select name="destination" required>
                   <option value="" selected disabled hidden>Choose destination</option>
-                  {% for place in places %}
-                      <option value="{{ place.country }}">{{ place.country }}</option>
+                  {% for country in countries %}
+                  <option value="{{ country.country }}">{{ country.country }}</option>
                   {% endfor %}
               </select>
           </div>

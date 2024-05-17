@@ -7,13 +7,15 @@ from django.shortcuts import render
 # Create your views here.
 def home(request):
     places = Place.objects.all()
-    return render(request,'home/index.html',{'places':places})
+    countries = Place.objects.values('country').distinct()
+    return render(request,'home/index.html',{'places':places,'countries': countries})
 
 
 @login_required
 def home_detail(request,slug):
    
     places_detail = Place.objects.get(slug=slug)
+    
     return render(request,'home/detail.html',{'place':places_detail})
 
 from django.shortcuts import render
@@ -26,21 +28,23 @@ from django.urls import reverse
 
 @login_required
 def Payment(request, slug):
-    if request.method == 'POST':
-        # Process the form data
-        place_slug = slug
-        total_price = request.POST.get('total_price')
+    # if request.method == 'POST':
+    #     # Process the form data
+    #     place_slug = slug
+    #     total_price = request.POST.get('total_price')
 
-        # Save the total price to the database
-        payment = Place.objects.create(place_slug=place_slug, total_price=total_price)
+    #     # Save the total price to the database
+    #     payment = Place.objects.create(place_slug=place_slug, total_price=total_price)
 
-        # Redirect to a success page or wherever you need to go
-        return HttpResponseRedirect(reverse('success.html'))
-    else:
-        payment = Place.objects.get(slug=slug)
-        return render(request, 'home/payment.html', {'place': payment})
+    #     # Redirect to a success page or wherever you need to go
+    #     return HttpResponseRedirect(reverse('success.html'))
+    # else:
+    #     payment = Place.objects.get(slug=slug)
+    #     return render(request, 'home/payment.html', {'place': payment})
 
-
+    place = Place.objects.get(slug=slug)
+    total_price = request.GET.get('total_price')
+    return render(request, 'home/payment.html', {'place': place, 'total_price': total_price})
      
 
 
