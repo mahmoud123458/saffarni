@@ -86,7 +86,11 @@
               <p class="location">{{place.country}}</p>
                <!-- continent name -->
                <p><i class="fa-solid fa-earth-africa" style="color: #54e894;"></i> {{place.continent}}</p>
-             
+              
+               <p class="ticket" title="Ticket">{{place.flight_class}}</p>
+               <!-- Time -->
+               <p class="calendar" title="Take-off time">{{place.date|date:"d-m-Y"}}</p>
+   
               <!-- country name -->
               <p class="description">
                 {{place.description}}
@@ -195,10 +199,10 @@
               <i class="fa-solid fa-list-ul"></i>
               <input list="economicClass" name="class" placeholder="Economic Class"  />
               <datalist id="economicClass">
-                  <option value="First Class"></option>
-                  <option value="Business Class"></option>
-                  <option value="Premium Economy"></option>
-                  <option value="Economy Class"></option>
+                  <option value="FirstClass"></option>
+                  <option value="BusnissClass"></option>
+                  <option value="PremiumClass"></option>
+                  <option value="EconomyClass"></option>
               </datalist>
           </div>
           <button type="submit" class="btn">Search</button>
@@ -225,36 +229,17 @@
               destination list has something for everyone.
             </p>
           </div>
-          
+         
           <div class="cards">
+            {% for continent in continents %}
             <div class="card card1">
               <div class="info">
-                <h3>Africa</h3>
+                <h3 >{{continent.name}}</h3>
                 <p>Embark on a journey for your lifetime</p>
-                <button class="btn">All Packages</button>
+                <button class="btn"><a href="{% url 'home' %}?continent={{ continent.name }}">All Packages</a></button>
               </div>
             </div>
-            <div class="card card2">
-              <div class="info">
-                <h3>Asia</h3>
-                <p>Embark on a journey for your lifetime</p>
-                <button class="btn">All Packages</button>
-              </div>
-            </div>
-            <div class="card card3">
-              <div class="info">
-                <h3>Europe</h3>
-                <p>Embark on a journey for your lifetime</p>
-                <button class="btn">All Packages</button>
-              </div>
-            </div>
-            <div class="card card4">
-              <div class="info">
-                <h3>America</h3>
-                <p>Embark on a journey for your lifetime</p>
-                <button class="btn">All Packages</button>
-              </div>
-            </div>
+            {% endfor %}
           </div>
         </div>
       </div>
@@ -295,23 +280,6 @@
       });
     </script>
 
-<script>
-  document.querySelectorAll('.btn').forEach(function(button) {
-    button.addEventListener('click', function() {
-      var cards = document.querySelectorAll('.card');
-      var selectedContinent = this.parentElement.querySelector('h3').innerText.toLowerCase();
-  
-      cards.forEach(function(card) {
-        var cardContinent = card.querySelector('h3').innerText.toLowerCase();
-        if (selectedContinent === cardContinent) {
-          card.style.display = 'block';
-        } else {
-          card.style.display = 'none';
-        }
-      });
-    });
-  });
-  
-</script>
+
     
    {% endblock content %}

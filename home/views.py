@@ -1,14 +1,23 @@
 from django.shortcuts import render
 
 from search.models import Hotel
-from . models import Place
+from . models import Place,Continent
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 # Create your views here.
 def home(request):
+    continent = request.GET.get('continent')
+    
     places = Place.objects.all()
-    countries = Place.objects.values('country').distinct()
-    return render(request,'home/index.html',{'places':places,'countries': countries})
+    countries = Place.objects.values('country').distinct() 
+    continents = Continent.objects.all()
+
+    if continent:
+        places = places.filter(continent=continent)
+        return render(request, 'shop.html', {'places': places})
+    else:
+        return render(request, 'home/index.html', {'places': places, 'countries': countries, 'continents': continents})
 
 
 @login_required
@@ -18,33 +27,35 @@ def home_detail(request,slug):
     
     return render(request,'home/detail.html',{'place':places_detail})
 
-from django.shortcuts import render
-from search.models import Hotel
-from .models import Place
-from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
-from django.http import HttpResponseRedirect
-from django.urls import reverse
 
+
+
+from django.conf import settings
+from django.shortcuts import render
+import stripe
+
+stripe.api_key = settings.STRIPE_SECRET_KEY
 @login_required
 def Payment(request, slug):
-    # if request.method == 'POST':
-    #     # Process the form data
-    #     place_slug = slug
-    #     total_price = request.POST.get('total_price')
-
-    #     # Save the total price to the database
-    #     payment = Place.objects.create(place_slug=place_slug, total_price=total_price)
-
-    #     # Redirect to a success page or wherever you need to go
-    #     return HttpResponseRedirect(reverse('success.html'))
-    # else:
-    #     payment = Place.objects.get(slug=slug)
-    #     return render(request, 'home/payment.html', {'place': payment})
-
     place = Place.objects.get(slug=slug)
     total_price = request.GET.get('total_price')
-    return render(request, 'home/payment.html', {'place': place, 'total_price': total_price})
+
+    if request.method == 'POST':
+        try:
+            # Create a Stripe charge
+            charge = stripe.Charge.create(
+                amount=1000,  # Amount in cents
+                currency='usd',
+                description='Example charge',
+                source=request.POST['stripeToken']
+            )
+            return render(request, 'home/success.html')
+        except stripe.error.CardError as e:
+            return render(request, 'home/payment_error.html', {'error': e})
+    else:
+        return render(request, 'home/payment.html', {'place': place, 'total_price': total_price,'stripe_public_key': settings.STRIPE_PUBLISHABLE_KEY})
+
+   
      
 
 
@@ -61,12 +72,30 @@ def search_flights(request):
 
         if destination:
             places = places.filter(country=destination)
+        
+        if date:
+            places = places.filter(date=date)
+        
+        if flight_class:
+            places = places.filter(flight_class=flight_class)
 
-        # Redirect to the 'shop' page with the filtered places
+        
         return render(request, 'shop.html', {'places': places})
     else:
-        # If the request is not POST, render the search form template
         return render(request, 'home/index.html')
-
 def success(request):
         return render(request,'home/success.html',{})
+
+
+
+
+# from django.http import JsonResponse
+# from django.template.loader import render_to_string
+
+
+
+# def filter_by_continent(request):
+#     continent = request.POST.get('continent')
+#     places = Place.objects.filter(continent=continent)[:3]  # Limit to 3 places for demo
+#     html = render_to_string('home/places.html', {'places': places})
+#     return JsonResponse({'html': html})

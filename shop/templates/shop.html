@@ -29,10 +29,12 @@
             <div class="text">
               <h3>{{place.city}}</h3>
               <!-- city name -->
-              <p class="location">{{place.country}}</p>
+               <p class="location">{{place.country}}</p>
                <!-- continent name -->
                <p><i class="fa-solid fa-earth-africa" style="color: #54e894;"></i> {{place.continent}}</p>
-
+               <p class="ticket" title="Ticket">{{place.flight_class}}</p>
+               <!-- Time -->
+               <p class="calendar" title="Take-off time">{{place.date|date:"d-m-Y"}}</p>
              
               <!-- country name -->
               <p class="description">

@@ -99,6 +99,21 @@ a{
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
 } */
+.ticket::before{
+    position: absolute;
+    content: '\f145';
+    color: var(--main-color);
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+}
+/* Calendar-check symbols */
+.calendar::before{
+    position: absolute;
+    content: '\f274';
+    color: var(--main-color);
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+}
 .spikes{    /** الفواصل **/
     position: relative;
 }

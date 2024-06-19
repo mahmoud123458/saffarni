@@ -27,6 +27,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+#security stripe
+
+STRIPE_SECRET_KEY = 'sk_test_51PHTnvHXSU4CQitgjRYN9MNjaNE7rs5rBkf61Drpq6DZvq2CLb4k9JegsAIy10zMYdiisv7XeNgyR0GvdX0UPJrF00IVN6sJVa'
+STRIPE_PUBLISHABLE_KEY = 'pk_test_51PHTnvHXSU4CQitgBhon58rOWZ3Yf0hsxj84KNkGHntNOTG7kAoD1WTqf6XZ1k1cYXPvd7U6MIcIoH7LgeU95LA000aLmMPiq6'
 
 # Application definition
 
@@ -150,3 +154,4 @@ EMAIL_PORT = 587
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+

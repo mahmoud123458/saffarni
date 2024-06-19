@@ -46,7 +46,7 @@ class Place(models.Model):
     duration=models.IntegerField(null=True,blank=True)
     crete_id=models.IntegerField(default=1)
     source=models.CharField( max_length=50,choices=source) 
-    date=models.DateField(auto_now=True, auto_now_add=False)
+    date=models.DateField(auto_now=False, auto_now_add=False)
     flight_class=models.CharField(max_length=50,choices=flight_class)
 
     
