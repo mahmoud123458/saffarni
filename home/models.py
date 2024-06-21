@@ -68,7 +68,7 @@ class Place(models.Model):
 
 class Continent(models.Model):
     name=models.CharField(max_length=50,choices=continent)
-
+    photo=models.ImageField(upload_to=image_upload)
         
     def __str__(self):
         return self.name

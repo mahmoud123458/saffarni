@@ -3,7 +3,6 @@ from django.shortcuts import render
 from search.models import Hotel
 from . models import Place,Continent
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponseRedirect
 from django.urls import reverse
 # Create your views here.
 def home(request):
@@ -12,7 +11,7 @@ def home(request):
     places = Place.objects.all()
     countries = Place.objects.values('country').distinct() 
     continents = Continent.objects.all()
-
+    
     if continent:
         places = places.filter(continent=continent)
         return render(request, 'shop.html', {'places': places})
@@ -89,13 +88,3 @@ def success(request):
 
 
 
-# from django.http import JsonResponse
-# from django.template.loader import render_to_string
-
-
-
-# def filter_by_continent(request):
-#     continent = request.POST.get('continent')
-#     places = Place.objects.filter(continent=continent)[:3]  # Limit to 3 places for demo
-#     html = render_to_string('home/places.html', {'places': places})
-#     return JsonResponse({'html': html})

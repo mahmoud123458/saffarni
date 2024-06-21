@@ -1,15 +1,16 @@
+
 .page{
     margin: auto;
 }
 html{
     scroll-behavior: smooth;
 }
-.blog{
+/* .blog{
     background-image: url(../../images/land-3.jpeg);
     background-size: cover;
     height:calc(100vh - 73px);
     position: relative;
-}
+} */
 
 .blog .intro-text-blog{
     position: absolute;

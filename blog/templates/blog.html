@@ -1,9 +1,20 @@
-{% extends 'base.html' %} {% load static %} {% block add %}
+{% extends 'base.html' %} 
+{% load static %} 
+{% block add %}
 <link rel="stylesheet" href="{% static 'CSS/blog.css' %}" />
 {% endblock add %} {% block content %}
 <!-- Start Blog section -->
 <div class="blog">
   <div class="intro-text-blog">
+    <style>
+      .blog {
+          background-image: url('{% static "images/land-3.jpg" %}');
+          background-size: cover;
+          height: calc(100vh - 73px);
+          position: relative;
+      }
+  </style>
+  
     <h1>Our Blog</h1>
   </div>
 </div>
@@ -12,7 +23,7 @@
 <!-- Start Cards -->
 <div class="container bigCard">
   <div class="card">
-    <img src="{% static 'images/land-2.jpg' %} " alt="" />
+    <img src="{% static 'images/land-2.jpeg' %} " alt="" />
 
     <div class="card-content">
       <h3>Plan the Perfect Vacation</h3>

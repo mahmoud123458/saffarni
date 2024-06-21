@@ -6,16 +6,15 @@
 {% endblock add %}
 {% block content %}
 
- 
 <!-- Start Details Package -->
 <div class="package">
   <img src="{{place.image.url}}" alt="" />
   <div class="container">
       <div class="details">
-          <h3>Crete</h3>
-          <span>{{place.city}}</span>
+          <h3>{{ place.city }}</h3>
+          <span>{{ place.city }}</span>
           <h2>Enjoy The Advance</h2>
-          <p>{{place.description}}</p>
+          <p>{{ place.description }}</p>
       </div>
       <div class="forms">
           <div class="select">
@@ -26,44 +25,48 @@
                   <span>Price</span>
               </div>
               <div>
-                  <h3>{{place.price}}</h3>
+                  <h3>{{ place.price }}</h3>
               </div>
           </div>
           <div id="formBook" class="show">
               <div class="date">
                   <h4>Date</h4>
-                  <span>{{place.date|date:"d-m-Y"}}</span>
+                  <span>{{ place.date|date:"d-m-Y" }}</span>
               </div>
               <div class="adults">
                   <div class="adult">
                       <h4>Adults</h4>
-                      <span>Over 18 ( {{place.price}} EG )</span>
+                      <span>Over 18 ( {{ place.price }} EG )</span>
                   </div>
                   <div class="count">
-                      <button onclick="increaseAdult()">+</button>
+                      <button type="button" onclick="increaseAdult()">+</button>
                       <span class="num" id="displayAdult">1</span>
-                      <button onclick="decreaseAdult()">-</button>
+                      <button type="button" onclick="decreaseAdult()">-</button>
                   </div>
               </div>
               <div class="child">
                   <div class="children">
                       <h4>Children</h4>
-                      <span>Under 18 ( {{place.half_price}} EG )</span>
+                      <span>Under 18 ( {{ place.half_price }} EG )</span>
                   </div>
                   <div class="count">
-                      <button onclick="increaseChild()">+</button>
+                      <button type="button" onclick="increaseChild()">+</button>
                       <span class="num" id="displayChild">0</span>
-                      <button onclick="decreaseChild()">-</button>
+                      <button type="button" onclick="decreaseChild()">-</button>
                   </div>
               </div>
               <p>Total Price:</p>
               <div class="totalPrice">0</div>
               <input type="hidden" id="total-price-input" name="total_price" value="0">
               
+              {% if user.is_authenticated %}
               <form method="GET" action="{% url 'payment' slug=place.slug %}">
                   <input type="hidden" id="total-price-hidden" name="total_price" value="0">
                   <button class="btn btn-primary btn-lg btn-block" type="submit">Book now</button>
               </form>
+              {% else %}
+              <a href="{% url 'login' %}?next={% url 'home_detail' slug=place.slug %}" class="btn btn-primary btn-lg btn-block">Login to Book</a>
+              {% endif %}
           </div>
       </div>
   </div>
@@ -72,8 +75,8 @@
 
 <script>
   function calculateTotalPrice() {
-      let adultPrice = {{place.price}};
-      let childPrice = {{place.half_price}};
+      let adultPrice = {{ place.price }};
+      let childPrice = {{ place.half_price }};
       let adults = document.getElementById('displayAdult').innerText;
       let children = document.getElementById('displayChild').innerText;
       let totalPrice = (adults * adultPrice) + (children * childPrice);
@@ -89,5 +92,4 @@
   calculateTotalPrice();
 </script>
 
-
-    {% endblock content %}
+{% endblock content %}

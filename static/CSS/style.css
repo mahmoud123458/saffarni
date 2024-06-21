@@ -1047,15 +1047,19 @@ header nav img:hover{
 /** End travelDestinations */
 /**###################################################################*/
 /** Start Stats **/
-.stats{
+.stats {
     padding-top: var(--pa-100);
     padding-bottom: var(--pa-100);
     position: relative;
     background-image: url(../images/stats.jpg);
     background-size: cover;
     min-height: 300px;
-}
-.stats::before{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .stats::before {
     content: '';
     position: absolute;
     top: 0;
@@ -1063,81 +1067,76 @@ header nav img:hover{
     width: 100%;
     height: 100%;
     background-color: rgba(255, 255, 255, 0.938);
-}
-.stats h2{
+  }
+  .stats h2 {
     position: relative;
     font-size: 40px;
     font-weight: bold;
     width: max-content;
     margin: 0 auto 50px;
-}
-@media (max-width: 360px) {
-    .stats h2{
-        font-size: 30px;
+  }
+  @media (max-width: 360px) {
+    .stats h2 {
+      font-size: 30px;
     }
-}
-.stats .container{
-    position: relative;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
-}
-.stats .container .box{
-    position: relative;
+  }
+  .stats .container {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    gap: 20px; /* Space between the boxes */
+    flex-wrap: wrap; /* Allow items to wrap if necessary */
+  }
+  .stats .box {
     background-color: #fff;
     text-align: center;
     padding: 30px 15px;
     opacity: .75;
-    -webkit-transition: var(--main-transition);
-    -moz-transition: var(--main-transition);
-    -ms-transition: var(--main-transition);
-    -o-transition: var(--main-transition);
     transition: var(--main-transition);
-}
-.stats .container .box:hover{
+    min-width: 250px; /* Ensure minimum width */
+    margin: 10px; /* Margin to provide some spacing */
+    position: relative;
+  }
+  .stats .box:hover {
     opacity: 1;
-}
-.stats .container .box::before,
-.stats .container .box::after{
+  }
+  .stats .box::before,
+  .stats .box::after {
     content: '';
     position: absolute;
     width: 3px;
     height: 0;
     background-color: var(--main-color);
-    -webkit-transition: 1s;
-    -moz-transition: 1s;
-    -ms-transition: 1s;
-    -o-transition: 1s;
     transition: 1s;
-}
-.stats .container .box::before{
+  }
+  .stats .box::before {
     top: 0;
     right: 0;
-}
-.stats .container .box::after{
+  }
+  .stats .box::after {
     bottom: 0;
     left: 0;
-}
-.stats .container .box:hover::before,
-.stats .container .box:hover::after{
+  }
+  .stats .box:hover::before,
+  .stats .box:hover::after {
     height: 100%;
-}
-.stats .container .box .number{
+  }
+  .stats .number {
     display: block;
     margin: 10px 0;
     font-size: 40px;
     font-weight: bold;
     user-select: none;
-}
-.stats .container .box .text{
+  }
+  .stats .text {
     display: block;
     color: var(--main-color);
     font-style: italic;
     font-weight: bold;
     user-select: none;
-}
-/** End Stats **/
-
+  }
+  /** End Stats **/
+  
 
 
 /**###################################################################*/
