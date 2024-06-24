@@ -114,6 +114,7 @@ a{
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
 }
+
 .spikes{    /** الفواصل **/
     position: relative;
 }
@@ -740,16 +741,21 @@ header nav img:hover{
     padding: 0 20px 20px;
     position: relative;
 }
+.travel .box .package .text h3{
+    margin: 0;
+}
 .travel .box .package .text .location,
-.travel .box .package .text .continent{
+.travel .box .package .text .continent,
+.travel .box .package .text .ticket,
+.travel .box .package .text .calendar{
     padding-left: 30px;
     font-size: 17px;
     user-select: none;
 }
-.travel .box .package .text .location::before{
-    left: 20px;
-}
-.travel .box .package .text .continent::before{
+.travel .box .package .text .location::before,
+.travel .box .package .text .continent::before,
+.travel .box .package .text .ticket::before,
+.travel .box .package .text .calendar::before{
     left: 20px;
 }
 .travel .box .package .text .description{
@@ -776,6 +782,7 @@ header nav img:hover{
 .travel .box .package .price p strike{
     font-size: 12px;
 }
+
 
 /* Request Form */
 .travel .request{

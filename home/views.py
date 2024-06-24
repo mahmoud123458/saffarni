@@ -29,32 +29,58 @@ def home_detail(request,slug):
 
 
 
-from django.conf import settings
-from django.shortcuts import render
-import stripe
+# from django.conf import settings
+# from django.shortcuts import render
+# import stripe
 
-stripe.api_key = settings.STRIPE_SECRET_KEY
+# stripe.api_key = settings.STRIPE_SECRET_KEY
 @login_required
 def Payment(request, slug):
-    place = Place.objects.get(slug=slug)
+    place = Place.objects.get(slug=slug) 
+    
     total_price = request.GET.get('total_price')
 
     if request.method == 'POST':
-        try:
-            # Create a Stripe charge
-            charge = stripe.Charge.create(
-                amount=1000,  # Amount in cents
-                currency='usd',
-                description='Example charge',
-                source=request.POST['stripeToken']
-            )
-            return render(request, 'home/success.html')
-        except stripe.error.CardError as e:
-            return render(request, 'home/payment_error.html', {'error': e})
-    else:
-        return render(request, 'home/payment.html', {'place': place, 'total_price': total_price,'stripe_public_key': settings.STRIPE_PUBLISHABLE_KEY})
+        pass
+    #     try:
+    #         # Create a Stripe charge
+    #         charge = stripe.Charge.create(
+    #             amount=1000,  # Amount in cents
+    #             currency='usd',
+    #             description='Example charge',
+    #             source=request.POST['stripeToken']
+    #         )
+    #         return render(request, 'home/success.html')
+    #     except stripe.error.CardError as e:
+    #         return render(request, 'home/payment_error.html', {'error': e})
+    # else:
+    return render(request, 'home/payment.html', {'place': place,'total_price': total_price})
 
-   
+
+# @login_required
+# def Payment_Hotel(request, slug):
+#     place2 = Hotel.objects.get(slug=slug)
+
+    
+#     total_price = request.GET.get('total_price')
+
+#     if request.method == 'POST':
+       
+    #     try:
+    #         # Create a Stripe charge
+    #         charge = stripe.Charge.create(
+    #             amount=1000,  # Amount in cents
+    #             currency='usd',
+    #             description='Example charge',
+    #             source=request.POST['stripeToken']
+    #         )
+    #         return render(request, 'home/success.html')
+    #     except stripe.error.CardError as e:
+    #         return render(request, 'home/payment_error.html', {'error': e})
+    # else:
+        #  return render(request, 'home/payment_hotel.html', {'place2':place2 ,'total_price': total_price})
+
+      
      
 
 
@@ -84,7 +110,6 @@ def search_flights(request):
         return render(request, 'home/index.html')
 def success(request):
         return render(request,'home/success.html',{})
-
 
 
 

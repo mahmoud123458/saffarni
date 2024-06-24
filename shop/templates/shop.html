@@ -4,6 +4,78 @@
 <link rel="stylesheet" href="{% static 'CSS/shop.css' %}">
 {% endblock add %}
 {% block content %}
+<style>
+  .travel .box .package .time {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin: auto;
+    height: 40px;
+    width: max-content;
+    background-color: #fff;
+    border: #1bbc9c40 1px solid;
+    bottom: 25px;
+    border-radius: var(--br-5);
+}
+.travel .box .package .time span{
+    font-size: 15px;
+    margin-right: 140px;
+}
+.travel .box .package .time i{
+    color : var(--main-color);
+    padding: 0 10px;
+}
+.travel .box .package .time i:hover{
+    cursor: pointer;
+    transform: scale(1.2);
+    color: #008f96e3;
+}
+.travel .box .package .text{
+    padding: 0 20px 20px;
+    position: relative;
+}
+.travel .box .package .text h3{
+    margin: 0;
+}
+.travel .box .package .text .location,
+.travel .box .package .text .continent,
+.travel .box .package .text .ticket,
+.travel .box .package .text .calendar{
+    padding-left: 30px;
+    font-size: 17px;
+    user-select: none;
+}
+.travel .box .package .text .location::before,
+.travel .box .package .text .continent::before,
+.travel .box .package .text .ticket::before,
+.travel .box .package .text .calendar::before{
+    left: 20px;
+}
+.travel .box .package .text .description{
+    border-top: 1px solid #ebebeb;
+    border-bottom: 1px solid #ebebeb;
+    padding: 20px 0;
+    font-size: 17px;
+    color: var(--clr909090);
+}
+.travel .box .package .price{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.travel .box .package .price p{
+    font-weight: bold;
+    font-size: 20px;
+}
+.travel .box .package .price p span{
+    text-decoration: line-through;
+    font-size: 14px;
+    color: #999;
+}
+.travel .box .package .price p strike{
+    font-size: 12px;
+}
+</style>
 <!-- Start Traveling -->
 <div class="travel" id="travel" >
   <div class="container" >

@@ -11,6 +11,6 @@ def search(request):
     return render(request,'search.html',{'hotels':hotels,'myfilter':myfilter})
 
 def Payment_hotel(request, slug):
-    payment = Place.objects.get(slug=slug)
+    payment = Hotel.objects.get(slug=slug)
     return render(request, 'payment_hotel.html', {'hotel': payment})
      

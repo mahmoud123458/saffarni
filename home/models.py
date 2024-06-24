@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.text import slugify
+# from search.models import Hotel
 # Create your models here.
 def image_upload(instance,filename):
     imagename,extenstion = filename.split(".")
@@ -44,7 +45,6 @@ class Place(models.Model):
     discount=models.DecimalField(max_digits=8, decimal_places=2)
     period=models.CharField(max_length=30,choices=period)
     duration=models.IntegerField(null=True,blank=True)
-    crete_id=models.IntegerField(default=1)
     source=models.CharField( max_length=50,choices=source) 
     date=models.DateField(auto_now=False, auto_now_add=False)
     flight_class=models.CharField(max_length=50,choices=flight_class)
@@ -55,7 +55,9 @@ class Place(models.Model):
 
     def save(self,*args, **kwargs):
         self.slug=slugify(self.city)
-        super(Place,self).save(*args, **kwargs)
+        super(Place,self).save(*args, **kwargs) 
+        
+
 
 
     def half_price(self):
