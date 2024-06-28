@@ -4,13 +4,12 @@ from . import views
 urlpatterns = [
     path('',views.home,name='home'),
     path('detail/<str:slug>',views.home_detail,name='detail'),
-    path('payment/<str:slug>',views.Payment,name="payment"),  
-    # path('payment_hotel/<str:slug>',views.Payment_Hotel,name="payment_hotel"),
+
 
     path('search-flights/', views.search_flights, name='search_flights'),
-    # path('create-checkout-session/', CreateCheckoutSessionView.as_view(), name='create_checkout_session'),
-    path('success/', views.success, name='success'),
-    # path('cancel/', payment_cancel_view, name='cancel'),
-
-   
+    path('payment_successful/', views.payment_successful, name='payment_successful'),
+    path('product_page',views.product_page,name='product_page'),
+    path('payment_cancelled',views.payment_cancelled,name='payment_cancelled'),
+    path('stripe_webhook',views.stripe_webhook,name='stripe_webhook'),
+    
 ]

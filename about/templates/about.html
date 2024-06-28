@@ -1,4 +1,152 @@
 {% extends 'base.html' %}
+{% load static %} 
+{% block add %}
+<link rel="stylesheet" href="{% static 'CSS/about.css' %}" />
+{% endblock add %}
+{% block content %}
+<style>
+  .land {
+    background-image: url({% static "images/about.png" %});
+    background-size: cover;
+    height: calc(100vh - 120px);
+    color: white;
+    flex-basis: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+  }
+</style>
+  <!-- Start Landing -->
+  <div class="land">
+    <div class="intro-text-land">
+      <h1>About Us</h1>
+    </div>
+  </div>
+  <!-- End Landing -->
+  <!-- Start About -->
+  <div class="about">
+    <div class="container">
+      <div class="text">
+        <p><span class="nameLogo">Safarnee</span> is a website for booking flights and hotels around the world. It has
+          what distinguishes it from others, and the most important thing that distinguishes it is:</p>
+        <p><span>Safety and Security:</span> Make sure the company gives safety a top priority.</p>
+        <p><span>Comfort and luxury:</span> Look for a company that provides a comfortable and enjoyable trip.</p>
+        <p><span>Flexibility of booking and change:</span> Check the policies for change and cancellation of
+          reservations.</p>
+        <p><span>Previous travelers’ reviews:</span> Read other people’s experiences with the company.</p>
+        <p><span>Offers and discounts:</span> Look for attractive offers.</p>
+        <p><span>Destination network:</span> Check the availability of the destinations you want to travel to.</p>
+        <p><span>Customer service:</span> Make sure there is good support for travelers.</p>
+        <p><span>Total cost:</span> Compare prices and services provided.</p>
+        <p>You can also provide an evaluation of your on-board experience through questionnaires such as:
+          1- <span class="underline">Flight service questionnaire</span> or 2- <span class="underline">Flight
+            questionnaire.</span></p>
+      </div>
+      <div class="image">
+        <img src="{% static "images/about-1.jpg" %}" alt="about image">
+      </div>
+    </div>
+  </div>
+  <!-- End About -->
+  <!-- Start Testimonials -->
+  <!-- <div class="spikes"></div> -->
+  <div class="testimonials" id="testimonials">
+    <h2 class="main-title">Testimonials</h2>
+    <div class="container">
+      <div class="box">
+        <img src="{% static 'images/avatar-1.png' %}" alt="person-01" />
+        <h3>Mahmoud Mohamed</h3>
+        <div class="rate">
+          <i class="filled fas fa-star"></i>
+          <i class="filled fas fa-star"></i>
+          <i class="filled fas fa-star"></i>
+          <i class="filled fas fa-star"></i>
+          <i class="fa-regular fa-star-half-stroke"></i>
+        </div>
+        <p>
+          An easy-to-use website for booking flights and paying online,
+          allowing you to cancel or change your flight before its scheduled time.
+        </p>
+      </div>
+      <div class="box">
+        <img src="{% static 'images/avatar-2.png' %}" alt="person-02" />
+        <h3>Mostafa Hosny</h3>
+        <div class="rate">
+          <i class="filled fas fa-star"></i>
+          <i class="filled fas fa-star"></i>
+          <i class="filled fas fa-star"></i>
+          <i class="filled fas fa-star"></i>
+          <i class="fa-regular fa-star-half-stroke' %}"></i>
+        </div>
+        <p>
+          The website offers special flights around the world at reasonable prices,
+          and they have discounts on some great flights.
+        </p>
+      </div>
+      <div class="box">
+        <img src="{% static 'images/avatar-3.png' %}" alt="person-03" />
+        <h3>Mahmoud Nabil</h3>
+        <div class="rate">
+          <i class="filled fas fa-star"></i>
+          <i class="filled fas fa-star"></i>
+          <i class="filled fas fa-star"></i>
+          <i class="filled fas fa-star"></i>
+          <i class="fa-regular fa-star-half-stroke"></i>
+        </div>
+        <p>
+          I tried booking a flight to Dubai and honestly it was a beautiful and
+          enjoyable trip and I did not find any difficulty in anything.
+        </p>
+      </div>
+      <div class="box">
+        <img src="{% static 'images/avatar-4.png' %}" alt="person-04" />
+        <h3>Ahmed Samey</h3>
+        <div class="rate">
+          <i class="filled fas fa-star"></i>
+          <i class="filled fas fa-star"></i>
+          <i class="filled fas fa-star"></i>
+          <i class="filled fas fa-star"></i>
+          <i class="fa-regular fa-star-half-stroke"></i>
+        </div>
+        <p>
+          I recommend anyone who uses this website, as it is easy to use and
+          pay online, and in different currencies.
+        </p>
+      </div>
+      <div class="box">
+        <img src="{% static 'images/avatar-5.png' %}" alt="person-05" />
+        <h3>Marwan Reda</h3>
+        <div class="rate">
+          <i class="filled fas fa-star"></i>
+          <i class="filled fas fa-star"></i>
+          <i class="filled fas fa-star"></i>
+          <i class="filled fas fa-star"></i>
+          <i class="far fa-star"></i>
+        </div>
+        <p>
+          The site is nice and fast and the customer service is quick to
+          respond to complaints and inquiries.
+        </p>
+      </div>
+      <div class="box">
+        <img src="{% static 'images/avatar-6.png' %}" alt="person-06" />
+        <h3>Abdullah Magdy</h3>
+        <div class="rate">
+          <i class="filled fas fa-star"></i>
+          <i class="filled fas fa-star"></i>
+          <i class="filled fas fa-star"></i>
+          <i class="filled fas fa-star"></i>
+          <i class="far fa-star"></i>
+        </div>
+        <p>
+          I have tried this site to book many trips and honestly it is
+          an excellent site and I do not find many problems with it like other sites
+        </p>
+      </div>
+    </div>
+  </div>
+  <!-- End Testimonials -->
 
-  {% block content %}
   {% endblock %}

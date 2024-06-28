@@ -1,0 +1,142 @@
+/** Start Landing **/
+.land {
+    background-image: url(../../images/about.png);
+    background-size: cover;
+    height: calc(100vh - 120px);
+    color: white;
+    flex-basis: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+}
+
+.land .intro-text-land::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+}
+
+.land .intro-text-land h1 {
+    margin: 0;
+    font-weight: bold;
+    font-size: 50px;
+    color: white;
+}
+
+/** End Landing **/
+
+/** Start About **/
+.about {
+    margin-top: var(--pa-100);
+    margin-bottom: var(--pa-100);
+}
+
+.about .container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.about .text p {
+    line-height: 1.6;
+    font-size: 22px;
+    color: #000000cc;
+    margin: 0;
+}
+
+.about .text p .nameLogo {
+    color: var(--main-color);
+}
+
+.about .text p span {
+    font-weight: bold;
+}
+
+.about .text p .underline {
+    font-weight: normal;
+    text-decoration: underline;
+}
+
+.about .image img {
+    width: 100%;
+    height: 450px;
+}
+
+@media (max-width: 768px) {
+    .about .container {
+        gap: 0;
+    }
+
+    .about .text p {
+        font-size: 19px;
+        padding: 0 7px;
+    }
+
+    .about .image img {
+        display: none;
+    }
+}
+
+/** End About **/
+
+/** Start Testimonials **/
+.testimonials {
+    padding-top: var(--pa-100);
+    padding-bottom: var(--pa-100);
+    position: relative;
+    background-color: var(--section-background);
+}
+
+.testimonials .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 40px;
+}
+
+.testimonials .container .box {
+    padding: 20px;
+    background-color: white;
+    position: relative;
+}
+
+.testimonials .container .box img {
+    position: absolute;
+    top: -30px;
+    right: -5px;
+    width: 100px;
+    border: 10px solid var(--section-background);
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    border-radius: 50%;
+}
+
+.testimonials .container .box h3 {
+    margin: 0px 0 10px;
+}
+
+.testimonials .container .box .title {
+    display: block;
+    margin-bottom: 10px;
+    color: var(--secondary-color);
+}
+
+.testimonials .container .box .rate {
+    color: gold;
+}
+
+.testimonials .container .box p {
+    font-size: 20px;
+    color: rgba(88, 88, 72, 0.6);
+    margin: 10px 0 0;
+}
+
+/** End Testimonials **/

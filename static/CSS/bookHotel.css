@@ -1,0 +1,242 @@
+.package {
+    margin-bottom: var(--mr-100);
+}
+
+.package img {
+    width: 100%;
+    height: calc(100vh - 175px);
+}
+
+.package .container {
+    margin-top: calc(var(--mr-100) - 50px);
+    display: flex;
+    align-items: flex-start;
+    gap: 35px;
+    padding: 0px;
+}
+
+@media (max-width: 768px) {
+    .package .container {
+        flex-direction: column;
+    }
+}
+
+.package .container .details {
+    max-width: 700px;
+}
+
+.package .container .details h3 {
+    margin: 0;
+    padding: 10px 0;
+    font-weight: bold;
+}
+
+.package .container .details span {
+    color: var(--clr909090);
+    font-weight: bold;
+}
+
+.package .container .details span::before {
+    content: '\f3c5';
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    margin-right: 10px;
+    font-size: 20px;
+    color: var(--main-color);
+}
+
+.package .container .details h2 {
+    margin-top: 20px;
+}
+
+.package .container .details p {
+    color: var(--clr909090);
+    text-wrap: balanced;
+    line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+    .package .container .details {
+        width: 100%;
+        padding: 10px;
+    }
+}
+
+.package .container .forms {
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    padding: 30px;
+    margin: 0;
+    width: 100%;
+    -webkit-border-radius: var(--br-10);
+    -moz-border-radius: var(--br-10);
+    -ms-border-radius: var(--br-10);
+    -o-border-radius: var(--br-10);
+    border-radius: var(--br-10);
+}
+
+.package .container .forms .prices {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--clr-e8e8e8);
+}
+
+.package .forms .prices span {
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.package .forms .prices h3 {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.package .forms .prices h3::after {
+    content: 'EG';
+    font-size: 16px;
+}
+
+.package .container .forms .select {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom: 2px solid var(--clr-e8e8e8);
+    user-select: none;
+}
+
+.package .container .forms .select p{
+    color: var(--main-color);
+    font-weight: bold;
+    padding: 10px 0;
+    font-size: 22px;
+}
+
+
+/****  Form Book  ****/
+
+.package .container .forms #formBookHotels .date {
+    border-bottom: 2px solid var(--clr-e8e8e8);
+    padding: var(--pd);
+}
+
+.package .container .forms #formBookHotels .date h4 {
+    font-weight: bold;
+    margin: 7px 0;
+}
+
+.package .container .forms #formBookHotels .date span {
+    color: var(--clr-909090);
+    font-size: var(--fs);
+}
+
+.package .container .forms #formBookHotels .roomNum,
+.package .container .forms #formBookHotels .adults,
+.package .container .forms #formBookHotels .child {
+    border-bottom: 2px solid var(--clr-e8e8e8);
+    padding: var(--pd);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.package .container .forms #formBookHotels .roomNum h4,
+.package .container .forms #formBookHotels .adults .adult h4,
+.package .container .forms #formBookHotels .child .children h4 {
+    font-weight: bold;
+    margin: 7px 0;
+}
+
+.package .container .forms #formBookHotels .roomNum span,
+.package .container .forms #formBookHotels .adults .adult span,
+.package .container .forms #formBookHotels .child .children span {
+    color: var(--clr-909090);
+    font-size: var(--fs);
+}
+
+.package .forms #formBookHotels .roomNum .count,
+.package .forms #formBookHotels .adults .count,
+.package .forms #formBookHotels .child .count {
+    display: flex;
+    align-items: center;
+}
+
+.package .forms #formBookHotels .roomNum .count button,
+.package .forms #formBookHotels .adults .count button,
+.package .forms #formBookHotels .child .count button {
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.package .forms #formBookHotels .roomNum .count .num,
+.package .forms #formBookHotels .adults .count .num,
+.package .forms #formBookHotels .child .count .num {
+    font-size: 22px;
+    font-weight: bold;
+    padding: 0 10px;
+}
+
+.package .forms #formBookHotels .chickBox {
+    padding: var(--pd);
+    color: var(--clr-909090);
+}
+
+.package .forms #formBookHotels .chickBox h4 {
+    font-weight: bold;
+    margin: 7px 0;
+}
+
+.package .forms #formBookHotels .chickBox span {
+    color: var(--clr-909090);
+    font-size: var(--fs);
+    display: block;
+    margin-bottom: 10px;
+}
+
+.package .forms #formBookHotels .chickBox .chick1,
+.package .forms #formBookHotels .chickBox .chick2 {
+    display: flex;
+    align-items: center;
+}
+
+.package .forms #formBookHotels .chickBox .chick1 input,
+.package .forms #formBookHotels .chickBox .chick2 input {
+    margin-bottom: 10px;
+}
+
+.package .forms #formBookHotels .chickBox .chick1 label,
+.package .forms #formBookHotels .chickBox .chick2 label {
+    display: block;
+    font-size: var(--fs);
+    padding: 10px;
+}
+
+.package .forms #formBookHotels .chickBox .chick1 label span,
+.package .forms #formBookHotels .chickBox .chick2 label span {
+    display: inline-block;
+}
+
+.package .forms #formBookHotels p {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.package .forms #formBookHotels .totalPrice {
+    width: 100%;
+    border-radius: var(--br-7);
+    background-color: #ffffff;
+    padding: 10px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    box-shadow: inset 1px 1px 7px rgba(192, 192, 192, 0.888);
+}
+
+.package .forms #formBookHotels input[type="submit"] {
+    width: 100%;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: var(--fs);
+    padding: 15px 0;
+    margin: 10px auto;
+    transition: var(--main-transition);
+}

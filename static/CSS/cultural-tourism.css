@@ -1,0 +1,160 @@
+* {
+    box-sizing: border-box
+}
+
+body {
+    font-family: Verdana, sans-serif;
+    margin: 0
+}
+
+.review {
+    background-image: url(../../../images/review_background.png);
+    background-size: cover;
+    height: calc(100vh - 120px);
+    color: white;
+    flex-basis: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+}
+
+.mySlides {
+    display: none
+}
+
+img {
+    vertical-align: middle;
+    width: 150px;
+    height: 500px;
+    border-radius: 10px;
+}
+
+/* Slideshow container */
+.slideshow-container {
+    max-width: 1000px;
+    position: relative;
+    margin: auto;
+    padding-top: 100px;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+    cursor: pointer;
+    position: absolute;
+    top: 60%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+    background-color: var(--main-color);
+}
+
+/* The dots/bullets/indicators */
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: var(--main-color);
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.active,
+.dot:hover {
+    background-color: #717171;
+}
+
+.container .c-grey {
+    color: rgba(88, 88, 72, 0.6);
+}
+
+.in_ex {
+    border-top: 1px solid #ccc;
+}
+
+.con_ul {
+    display: flex;
+    gap: 60px;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+
+.con_ul ul {
+    list-style: none;
+    padding-left: 0;
+    position: relative;
+}
+
+.con_ul ul li {
+    margin-bottom: 20px;
+    align-items: center;
+    position: relative;
+    padding-left: 25px;
+}
+
+.con_ul ul li::before {
+    position: absolute;
+    content: '\f00c';
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    color: var(--main-color);
+    left: 0;
+    top: 0;
+}
+
+.con_ul ul li.x-mark::before {
+    position: absolute;
+    content: '\f00d';
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    color: black;
+    left: 0;
+    top: 0;
+}
+
+/* Fading animation */
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade {
+    from {
+        opacity: .4
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+
+    .prev,
+    .next,
+    .text {
+        font-size: 11px
+    }
+}

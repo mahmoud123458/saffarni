@@ -1,0 +1,148 @@
+{% load static %} 
+{% block add %}
+<link rel="stylesheet" href="{% static 'CSS/eco-tourism.css' %}" />
+{% endblock add %} {% block content %}
+
+<style>
+    .review {
+        background-image: url({% static "images/review_background.png" %});
+        background-size: cover;
+        height: calc(100vh - 120px);
+        color: white;
+        flex-basis: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        z-index: 1;
+    }
+</style>
+
+    <!-- Start Blog section -->
+    <div class="review">
+        <div class="intro-text-review">
+        </div>
+    </div>
+    <!-- End Blog section  -->
+
+    <div class="container">
+        <div class="slideshow-container">
+            <div class="mySlides fade">
+                <img src="{% static 'images/Eco-tourism-1.jpg' %}" style="width:100%">
+            </div>
+
+            <div class="mySlides fade">
+                <img src="{% static 'images/Eco-tourism2.jpg' %}" style="width:100%">
+            </div>
+
+            <div class="mySlides fade">
+                <img src="{% static 'images/Eco-tourism-3.jpg' %}" style="width:100%">
+            </div>
+
+            <div class="mySlides fade">
+                <img src="{% static 'images/Eco-tourism-4.jpg' %}" style="width:100%">
+            </div>
+
+            <div class="mySlides fade">
+                <img src="{% static 'images/Eco-tourism-5.jpg' %}" style="width:100%">
+            </div>
+
+            <a class="prev" onclick="plusSlides(-1)">❮</a>
+            <a class="next" onclick="plusSlides(1)">❯</a>
+
+        </div>
+        <br>
+
+        <div style="text-align:center">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+            <span class="dot" onclick="currentSlide(4)"></span>
+            <span class="dot" onclick="currentSlide(5)"></span>
+        </div>
+        <div class="info">
+            <h2>Enjoy the Adventure</h2>
+            <p class="c-grey">
+                Ecotourism is a type of tourism that focuses on traveling to natural areas with the intention of
+                enjoying the beauty of nature and preserving it. This type of tourism is characterized by directing
+                attention towards preserving the environment, reducing the negative impact on the ecosystem, and
+                supporting local communities. Ecotourism aims to achieve a balance between recreation and environmental
+                conservation. The main principles of ecotourism include:
+            </p>
+
+            <p class="c-grey">
+                * Environmental preservation: protecting natural areas and preserving biodiversity through sustainable
+                tourism practices that reduce pollution and waste.
+                <br>
+                * Environmental education: Educating tourists about the importance of preserving the environment by
+                providing information about the local ecosystem and the importance of preserving natural resources.
+                <br>
+                * Supporting local communities: Promoting the economic development of local communities by providing job
+                opportunities and supporting local industries, such as handicrafts and agricultural projects.
+                <br>
+                * Sustainability: Using natural resources in a sustainable way that ensures their preservation for
+                future
+                generations.
+            </p>
+        </div>
+
+        <div class="in_ex">
+            <h3>Included / Excluded</h3>
+            <p class="c-grey">
+                To help you plan your trip, we have put together a list of what's included and what's not included in
+                your
+                tour
+                package. This will give you a clear understanding of what to expect and help you make any necessary
+                arrangements
+                before your journey begins.</p>
+            <div class="con_ul">
+                <ul>
+                    <li>Trains and Bus transportation</li>
+                    <li>Breakfast, lunch, and dinner.</li>
+                    <li>Accommodation at hotel</li>
+                    <li>Professional tour guide</li>
+                </ul>
+                <ul>
+                    <li>Transfers between destinations</li>
+                    <li>Swimming Pool</li>
+                    <li class="x-mark">Custom itinerary</li>
+                    <li class="x-mark">Entrance fees to museums</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides((slideIndex += n));
+}
+
+function currentSlide(n) {
+  showSlides((slideIndex = n));
+}
+
+function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {
+    slideIndex = 1;
+  }
+  if (n < 1) {
+    slideIndex = slides.length;
+  }
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex - 1].style.display = "block";
+  dots[slideIndex - 1].className += " active";
+}
+
+    </script>
+    {% endblock content %}

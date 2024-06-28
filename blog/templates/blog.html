@@ -4,76 +4,84 @@
 <link rel="stylesheet" href="{% static 'CSS/blog.css' %}" />
 {% endblock add %} {% block content %}
 <!-- Start Blog section -->
-<div class="blog">
-  <div class="intro-text-blog">
-    <style>
-      .blog {
-          background-image: url('{% static "images/land-3.jpg" %}');
-          background-size: cover;
-          height: calc(100vh - 73px);
-          position: relative;
-      }
-  </style>
+<style>
+  .blog {
+    background-image: url({% static "images/blog.png" %});
+    background-size: cover;
+    height: calc(100vh - 120px);
+    color: white;
+    flex-basis: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+}
+</style>
   
-    <h1>Our Blog</h1>
-  </div>
-</div>
-<!-- End Blog section  -->
-
-<!-- Start Cards -->
-<div class="container bigCard">
-  <div class="card">
-    <img src="{% static 'images/land-2.jpeg' %} " alt="" />
-
-    <div class="card-content">
-      <h3>Plan the Perfect Vacation</h3>
-      <p>
-        Planning a vacation can be overwhelming, but this post offers a
-        step-by-step guide to help readers create a comprehensive travel
-        itinerary. From choosing a destination to booking accommodations and
-        activities, readers will learn how to plan a stress-free and enjoyable
-        trip.
-      </p>
-      <a href="" class="btn-blog">Read More</a>
+  <div class="blog">
+    <div class="intro-text-blog">
+      <h1>Our Blog</h1>
     </div>
   </div>
+  <!-- End Blog section  -->
 
-  <div class="card">
-    <img src="{% static 'images/box-1.jpeg' %} " alt="" />
-    <div class="card-content">
-      <h3>Explore the Wonders</h3>
-      <p>
-        Must-see destinations and experiences, including wildlife and cultural
-        experiences.!
-      </p>
-      <a href="" class="btn-blog">Read More</a>
+  <!-- Start Cards -->
+  <div class="container bigCard">
+    <div class="card">
+      <img src="{% static "images/Leisure-tourism.jpg" %}" alt="" />
+
+      <div class="card-content">
+        <h3>Leisure Tourism</h3>
+        <p>
+          A type of trip that people take for the purpose of recreation, enjoyment, and spending an enjoyable time away
+          from the daily routine and work. Recreational trips aim to achieve psychological and physical comfort through
+          fun and exciting activities .
+        </p>
+        <a href="{% url "read_more3" %}" class="btn-blog">Read More</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="{% static "images/Religious-Tourism.jpg" %}" alt="" />
+      <div class="card-content">
+        <h3>Religious Tourism</h3>
+        <p>
+          Traveling to a holy or religiously significant place with the aim of worshiping,
+          worshiping, participating in religious rituals, or receiving a religious blessing. The goals and objectives of
+          religious trips vary according to religion and beliefsIt is linked to specific traditions that
+          differ from religions .
+        </p>
+        <a href="{% url "read_more4" %}" class="btn-blog">Read More</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="{% static "images/Cultural-tourism.jpg" %}" alt="" />
+      <div class="card-content">
+        <h3>Cultural Tourism</h3>
+        <p>
+          A type of tourism that focuses on exploring the local culture, history, heritage and arts of the destination
+          that the tourist is visiting. It aims to enhance understanding and appreciation of different cultures by
+          visiting historical places, archaeological sites and museums .
+        </p>
+        <a href="{% url "read_more1" %}" class="btn-blog">Read More</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="{% static "images/Eco-tourism.jpeg" %}" alt="" />
+      <div class="card-content">
+        <h3>Eco-tourism</h3>
+        <p>
+          A type of tourism that focuses on traveling to natural areas with the intention of enjoying the beauty of
+          nature. This type of tourism is characterized by directing attention towards preserving the environment,
+          reducing the negative impact on the ecosystem and .
+        </p>
+        <a href="{% url "read_more2" %}" class="btn-blog">Read More</a>
+      </div>
     </div>
   </div>
-
-  <div class="card">
-    <img src="{% static 'images/box-2.jpeg' %} " alt="" />
-    <div class="card-content">
-      <h3>Traveling on a Budget</h3>
-      <p>
-        Practical advice for travelers who want to see the world without
-        breaking the bank.
-      </p>
-      <a href="" class="btn-blog">Read More</a>
-    </div>
-  </div>
-
-  <div class="card">
-    <img src="{% static 'images/box-3.jpeg' %} " alt="" />
-    <div class="card-content">
-      <h3>Must-See Landmarks</h3>
-      <p>
-        iconic landmarks that make Europe one of the world's most popular travel
-        destinations.
-      </p>
-      <a href="" class="btn-blog">Read More</a>
-    </div>
-  </div>
-</div>
-<!-- End Cards -->
+  <!-- End Cards -->
 
 {% endblock content %}

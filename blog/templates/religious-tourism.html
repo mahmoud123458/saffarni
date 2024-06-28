@@ -1,0 +1,147 @@
+{% load static %} 
+{% block add %}
+<link rel="stylesheet" href="{% static "CSS/religious-tourism.css" %}" />
+{% endblock add %} {% block content %}
+
+<style>
+    .review {
+        background-image: url({% static "images/review_background.png" %});
+        background-size: cover;
+        height: calc(100vh - 120px);
+        color: white;
+        flex-basis: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        z-index: 1;
+    }
+    
+</style>
+    <!-- Start Blog section -->
+    <div class="review">
+        <div class="intro-text-review">
+        </div>
+    </div>
+    <!-- End Blog section  -->
+
+    <div class="container">
+        <div class="slideshow-container">
+            <div class="mySlides fade">
+                <img src="{% static 'images/Religious-Tourism-Slide-1.jpg' %}" style="width:100%">
+            </div>
+
+            <div class="mySlides fade">
+                <img src="{% static "images/Religious-Tourism-Slide-2.jpg" %}" style="width:100%">
+            </div>
+
+            <div class="mySlides fade">
+                <img src="{% static "images/Religious-Tourism-Slide-3.jpg" %}" style="width:100%">
+            </div>
+
+            <div class="mySlides fade">
+                <img src="{% static "images/Religious-Tourism-Slide-4.jpg" %}" style="width:100%">
+            </div>
+
+            <div class="mySlides fade">
+                <img src="{% static "images/Religious-Tourism-Slide-5.jpg" %}" style="width:100%">
+            </div>
+
+            <a class="prev" onclick="plusSlides(-1)">❮</a>
+            <a class="next" onclick="plusSlides(1)">❯</a>
+
+        </div>
+        <br>
+
+        <div style="text-align:center">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+            <span class="dot" onclick="currentSlide(4)"></span>
+            <span class="dot" onclick="currentSlide(5)"></span>
+        </div>
+        <div class="info">
+            <h2>Enjoy the Adventure</h2>
+            <p class="c-grey">
+                Al-Aqsa Mosque is one of the largest mosques in the world and one of the three mosques that Muslims
+                travel to, as the Prophet of Islam Muhammad said. It is also the first of the two qiblahs in Islam. It
+                is located inside the Old City of Jerusalem in Palestine. It is the entire area surrounded by the wall
+                and the name of everything that is inside the wall of Al-Aqsa Mosque, located in the far southeastern
+                corner of the walled Old City.
+
+                Its area is approximately 144,000 square meters, and includes the Dome of the Rock, the Qibli Mosque,
+                the Marwani Chapel, the Bab al-Rahma Chapel, and several other landmarks, numbering up to 200 landmarks.
+                Al-Aqsa Mosque is located on a small plateau called the “Moria Plateau,” and the rock is the highest
+                point in it, and is located in its heart.</p>
+
+            <p class="c-grey">* Al-Aqsa Mosque: The word “Al-Aqsa” means the farthest, and it was named Al-Aqsa because
+                of
+                the distance between it and the Grand Mosque, and the farthest mosque on earth from the people of Mecca
+                was venerated by visits. Who gave him this name according to the Islamic doctrine of God in the
+                Qur’an . <br>
+                * The Holy House: The word “holy” means blessed and purified . <br>
+                * Bayt al-Maqdis: This is the name that was known before it was called “Al-Aqsa Mosque” in the Holy
+                Qur’an, and this name is the one used in most of the hadiths of the Prophet Muhammad, such as what he
+                said on the day of the Night Journey and Mi’raj: “Then Gabriel, peace be upon him, and I entered Bayt
+                al-Maqdis, and everyone prayed.” "One of us has two rak'ahs."</p>
+        </div>
+
+        <div class="in_ex">
+            <h3>Included / Excluded</h3>
+            <p class="c-grey">
+                To help you plan your trip, we have put together a list of what's included and what's not included in
+                your
+                tour
+                package. This will give you a clear understanding of what to expect and help you make any necessary
+                arrangements
+                before your journey begins.</p>
+            <div class="con_ul">
+                <ul>
+                    <li>air flights and Bus transportation</li>
+                    <li>Breakfast, lunch, and dinner.</li>
+                    <li>Accommodation at hotel</li>
+                    <li>Professional tour guide</li>
+                </ul>
+                <ul>
+                    <li>Transfers between destinations</li>
+                    <li>Entrance fees to museums</li>
+                    <li class="x-mark">Custom itinerary</li>
+                    <li class="x-mark">Swimming Pool</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script>
+        let slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides((slideIndex += n));
+}
+
+function currentSlide(n) {
+  showSlides((slideIndex = n));
+}
+
+function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {
+    slideIndex = 1;
+  }
+  if (n < 1) {
+    slideIndex = slides.length;
+  }
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex - 1].style.display = "block";
+  dots[slideIndex - 1].className += " active";
+}
+
+    </script>
+    {% endblock content %}

@@ -32,6 +32,7 @@ urlpatterns = [
     path('shop', include('shop.urls')),   
     path('search', include('search.urls')),
     # path('payments/', include('payments.urls')),
+    
     path('login/', auth_views.LoginView.as_view(), name='login'),
 
 

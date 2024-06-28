@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block add %}
+<link rel="stylesheet" href="{% static 'CSS/bookHotel.css' %}">
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    let numRooms = 1;
+    let numChildren = 0;
+    const roomPrice = {{ hotel.price }};
+    const childPrice = {{ hotel.half_price }};
+
+    function updateTotalPrice() {
+        const totalPrice = (numRooms * roomPrice) + (numChildren * childPrice);
+        document.querySelector('.totalPrice').innerText = totalPrice;
+        document.getElementById('total-price-input').value = totalPrice;
+        document.getElementById('total-price-hidden').value = totalPrice;
+    }
+
+    document.getElementById('increaseNumRoom').addEventListener('click', function() {
+        numRooms++;
+        document.getElementById('displayNumRoom').innerText = numRooms;
+        updateTotalPrice();
+    });
+
+    document.getElementById('decreaseNumRoom').addEventListener('click', function() {
+        if (numRooms > 1) {
+            numRooms--;
+            document.getElementById('displayNumRoom').innerText = numRooms;
+            updateTotalPrice();
+        }
+    });
+
+   
+
+    document.getElementById('increaseChild').addEventListener('click', function() {
+        numChildren++;
+        document.getElementById('displayChildren').innerText = numChildren;
+        updateTotalPrice();
+    });
+
+    document.getElementById('decreaseChild').addEventListener('click', function() {
+        if (numChildren > 0) {
+            numChildren--;
+            document.getElementById('displayChildren').innerText = numChildren;
+            updateTotalPrice();
+        }
+    });
+
+    updateTotalPrice();
+});
+</script>
+{% endblock add %}
+{% block content %}
+
+<!-- Start Details Package -->
+<div class="package">
+    <img src="{{hotel.image.url}}" alt="" />
+    <div class="container">
+        <div class="details">
+            <h2>Enjoy your stay in</h2>
+            <h3>{{hotel.name}}</h3>
+            <span>{{hotel.country}} - {{hotel.address}}</span>
+        </div>
+        <div class="forms">
+            <div class="select">
+                <p class="bookHotel">Booking Form</p>
+            </div>
+
+            <div class="prices">
+                <div>
+                    <span>Price</span>
+                </div>
+                <div>
+                    <h3>{{hotel.price}}</h3>
+                </div>
+            </div>
+
+            <div id="formBookHotels" class="show">
+                <div class="roomNum">
+                    <h4>The number of rooms</h4>
+                    <div class="count">
+                        <button id="increaseNumRoom">+</button>
+                        <span class="num" id="displayNumRoom">1</span>
+                        <button id="decreaseNumRoom">-</button>
+                    </div>
+                </div>
+
+                <div class="child">
+                    <div class="children">
+                        <h4>Children</h4>
+                        <span>Under 18 ( {{hotel.half_price}} EG )</span>
+                    </div>
+                    <div class="count">
+                        <button id="increaseChild">+</button>
+                        <span class="num" id="displayChildren">0</span>
+                        <button id="decreaseChild">-</button>
+                    </div>
+                </div>
+
+                <p>Total Price:</p>
+                <div class="totalPrice">0</div>
+                <input type="hidden" id="total-price-input" name="total_price" value="0">
+                
+                {% if user.is_authenticated %}
+                <form method="GET" action="{% url 'payment_hotel' slug=hotel.slug %}">
+                    <input type="hidden" id="total-price-hidden" name="total_price" value="0">
+                    <button class="btn btn-primary btn-lg btn-block" type="submit">Book now</button>
+                </form>
+                {% else %}
+                <a href="{% url 'login' %}?next={% url 'book_hotel' slug=hotel.slug %}" class="btn btn-primary btn-lg btn-block">Login to Book</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Details Package -->
+
+{% endblock content %}

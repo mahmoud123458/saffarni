@@ -85,7 +85,7 @@
             <img src="{% static 'images/land-1.jpeg' %}" alt="landing" />
           </div>
           <div class="image img-down">
-            <img src="{% static 'images/land-3.jpg' %}" alt="landing" />
+            <img src="{% static 'images/land-3.jpeg' %}" alt="landing" />
           </div>
           <a href="#travel" class="go-down" title="go-down">
             <i class="fa-solid fa-angles-down fa-xl"></i>
@@ -109,7 +109,7 @@
               can provide you with a custom-tailored itinerary that exceeds your
               expectations.
             </p>
-            <button class="btn">More Info</button>
+            <a href="{% url "about" %}" class="btn">More Info</a>
           </div>
         </div>
 
@@ -157,7 +157,7 @@
               <!-- city name -->
               <p class="location">{{place.country}}</p>
                <!-- continent name -->
-               <p><i class="fa-solid fa-earth-africa" style="color: #54e894;"></i> {{place.continent}}</p>
+               <p><i class="fa-solid fa-earth-africa" style="color: var(--main-color)"></i> {{place.continent}}</p>
               
                <p class="ticket" title="Ticket">{{place.flight_class}}</p>
                <!-- Time -->
@@ -242,7 +242,7 @@
           <!-- Start Source -->
           <div class="source">
               <i class="fa-solid fa-plane-departure"></i>
-              <input list="source" name="source" placeholder="Source"  />
+              <input list="source" name="source" placeholder="    القيام"  />
               <datalist id="source">
                   <option value="Egypt"></option>
                   <option value="Cairo International Airport"></option>
@@ -262,7 +262,7 @@
 <!-- Start Destination -->
           <div class="dest">
             <i class="fa-solid fa-plane-arrival"></i>
-            <input list="destination" name="destination" placeholder="Destination" required />
+            <input list="destination" name="destination" placeholder="    الوصول" required />
             <datalist id="destination">
               <optgroup label="Africa">
                 <option value="Algeria">Algeria</option>
@@ -294,13 +294,13 @@
           <!-- Start Date -->
           <div class="date">
               <i class=" fa-solid fa-calendar-days"></i>
-              <input type="date" name="date"  />
+              <input id="date" type="date" tooltip="Today" from="today" name="date"  />
           </div>
       
           <!-- Start Class -->
           <div class="class">
               <i class="fa-solid fa-list-ul"></i>
-              <input list="economicClass" name="class" placeholder="Economic Class"  />
+              <input list="economicClass" name="class" placeholder="    نوع التذكرة"  />
               <datalist id="economicClass">
                   <option value="FirstClass"></option>
                   <option value="BusnissClass"></option>
@@ -308,7 +308,7 @@
                   <option value="EconomyClass"></option>
               </datalist>
           </div>
-          <button type="submit" class="btn">Search</button>
+          <button type="submit" class="btn">بحث</button>
       </form>
       
         </div>
@@ -343,8 +343,8 @@
                     background-image: url("{{ continent.photo.url }}");
                   }
                 </style>
-                <p>Embark on a journey for your lifetime</p>
-                <button class="btn"><a href="{% url 'home' %}?continent={{ continent.name }}">All Packages</a></button>
+                <p>انطلق في رحلتك لاستكشاف العالم</p>
+                <button class="btn"><a href="{% url 'home' %}?continent={{ continent.name }}">جميع الرحلات</a></button>
               </div>
             </div>
             {% endfor %}
@@ -363,16 +363,27 @@
   <h2>Our Awesome Stats</h2>
   <div class="container">
     <div class="box">
+      <i class="far fa-user fa-2x fa-fw"></i>
+      <span class="number" data-goal="500">500</span>
+      <span class="text">Passenger</span>
+    </div>
+    <div class="box">
       <i class="fa-solid fa-plane fa-2x fa-fw" aria-hidden="true"></i>
       <span class="number" data-goal="200">{{places.count}}</span>
       <span class="text">Flights</span>
     </div>
     <div class="box">
+      <i class="fa-solid fa-hotel fa-2x fa-fw"></i>
+      <span class="number" data-goal="120">{{hotels|length}}</span>
+      <span class="text">Hotels</span>
+    </div>
+    <div class="box">
       <i class="fa-solid fa-earth-africa fa-2x fa-fw"></i>
-      <span class="number" data-goal="120">{{countries.count}}</span>
+      <span class="number" data-goal="500">{{countries.count}}</span>
       <span class="text">Countries</span>
     </div>
   </div>
+
 </div>
 <!-- End Stats -->
 

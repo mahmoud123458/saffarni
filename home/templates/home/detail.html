@@ -60,7 +60,8 @@
               <input type="hidden" id="total-price-input" name="total_price" value="0">
               
               {% if user.is_authenticated %}
-              <form method="GET" action="{% url 'payment' slug=place.slug %}">
+              <form method="POST" action="{% url 'product_page' %}">
+                  {% csrf_token %}
                   <input type="hidden" id="total-price-hidden" name="total_price" value="0">
                   <button class="btn btn-primary btn-lg btn-block" type="submit">Book now</button>
               </form>
@@ -77,8 +78,8 @@
   function calculateTotalPrice() {
       let adultPrice = {{ place.price }};
       let childPrice = {{ place.half_price }};
-      let adults = document.getElementById('displayAdult').innerText;
-      let children = document.getElementById('displayChild').innerText;
+      let adults = parseInt(document.getElementById('displayAdult').innerText);
+      let children = parseInt(document.getElementById('displayChild').innerText);
       let totalPrice = (adults * adultPrice) + (children * childPrice);
       document.querySelector('.totalPrice').innerText = totalPrice;
       document.getElementById('total-price-input').value = totalPrice;

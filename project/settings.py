@@ -29,8 +29,11 @@ ALLOWED_HOSTS = []
 
 #security stripe
 
-STRIPE_SECRET_KEY = 'sk_test_51PHTnvHXSU4CQitgjRYN9MNjaNE7rs5rBkf61Drpq6DZvq2CLb4k9JegsAIy10zMYdiisv7XeNgyR0GvdX0UPJrF00IVN6sJVa'
-STRIPE_PUBLISHABLE_KEY = 'pk_test_51PHTnvHXSU4CQitgBhon58rOWZ3Yf0hsxj84KNkGHntNOTG7kAoD1WTqf6XZ1k1cYXPvd7U6MIcIoH7LgeU95LA000aLmMPiq6'
+STRIPE_SECRET_KEY_TEST = 'sk_test_51PWn9cCWrGAMm5uBBPMAFsyiqp4UhXzHs1ziP5jLiIzzp88gy0m8Q2eGyI1f3isgKMagGixeeDxiCobBCdlfPYBQ00PtIcmW6W'
+STRIPE_PUBLISHABLE_KEY_TEST = 'pk_test_51PWn9cCWrGAMm5uBQgDfVTCmi1IQMi0dwxwvF83pSTbzv8Ny0KJwXfVypgX08HSkXS9KZv4p3ycMibG9V3MovA1f00hqCk7vGk'
+REDIRECT_DOMAIN = 'http://127.0.0.1:8000'
+PRODUCT_PRICE = 'price_1PWnDcCWrGAMm5uBTVy54Uzq' 
+
 
 # Application definition
 
@@ -51,8 +54,15 @@ INSTALLED_APPS = [
     'search',
     'bootstrap4',
     'django_filters',
+    'djstripe',
+
     
 ]
+STRIPE_WEBHOOK_SECRET = 'we_1PWnOmCWrGAMm5uBa2ic3AOU'
+DJSTRIPE_FOREIGN_KEY_TO_FIELD = "id"
+
+DJSTRIPE_USE_NATIVE_JSONFIELD = True
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

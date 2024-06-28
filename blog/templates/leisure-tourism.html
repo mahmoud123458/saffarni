@@ -1,0 +1,178 @@
+{% load static %}
+{% block add %}
+<link rel="stylesheet" href="{% static 'CSS/leisure-tourism.css' %}" />
+
+{% endblock add %}
+
+{% block content %}
+<style>
+    .review {
+        background-image: url({% static "images/review_background.png" %});
+        background-size: cover;
+        height: calc(100vh - 120px);
+        color: white;
+        flex-basis: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        z-index: 1;
+    }
+    .mySlides {
+        display: none;
+    }
+    .fade {
+        -webkit-animation-name: fade;
+        -webkit-animation-duration: 1.5s;
+        animation-name: fade;
+        animation-duration: 1.5s;
+    }
+    @-webkit-keyframes fade {
+        from {opacity: .4}
+        to {opacity: 1}
+    }
+    @keyframes fade {
+        from {opacity: .4}
+        to {opacity: 1}
+    }
+</style>
+
+
+<!-- Start Blog section -->
+<div class="review">
+    <div class="intro-text-review">
+    </div>
+</div>
+<!-- End Blog section -->
+
+<div class="container">
+    <div class="slideshow-container">
+        <div class="mySlides fade">
+            <img src="{% static 'images/Hilton Hotel.jpeg' %}" style="width:100%">
+        </div>
+
+        <div class="mySlides fade">
+            <img src="{% static 'images/review_hotel-2.jpeg' %}" style="width:100%">
+        </div>
+
+        <div class="mySlides fade">
+            <img src="{% static 'images/review_hotel-3.jpg' %}" style="width:100%">
+        </div>
+
+        <div class="mySlides fade">
+            <img src="{% static 'images/review_hotel-4.jpg' %}" style="width:100%">
+        </div>
+
+        <div class="mySlides fade">
+            <img src="{% static 'images/review_hotel-5.jpeg' %}" style="width:100%">
+        </div>
+
+        <a class="prev" onclick="plusSlides(-1)">❮</a>
+        <a class="next" onclick="plusSlides(1)">❯</a>
+    </div>
+    <br>
+
+    <div style="text-align:center">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+        <span class="dot" onclick="currentSlide(4)"></span>
+        <span class="dot" onclick="currentSlide(5)"></span>
+    </div>
+
+    <div class="info">
+        <h2>Enjoy the Adventure</h2>
+        <p class="c-grey">
+            Are you looking for an adventure of a lifetime? Join us on an unforgettable journey through some of the
+            world's most stunning landscapes and cultural destinations. Our expertly curated tours take you to incredible
+            destinations, from the rugged mountains of Patagonia to the vibrant cities of Asia. Our itineraries are designed
+            to immerse you in the local culture, with opportunities to meet locals, try new foods, and learn about the
+            history and traditions of each destination. Our experienced guides will lead you through each destination,
+            sharing their knowledge and passion for travel. We offer a range of activities to suit every traveler, from
+            hiking and kayaking to cultural tours and culinary experiences.
+        </p>
+        <p class="c-grey">
+            Our accommodations are carefully selected for comfort and convenience, with options to suit every budget.
+            Whether you prefer luxurious hotels or cozy homestays, we have something for everyone. At every step of the
+            journey, we prioritize sustainability and responsible tourism. We work with local communities to ensure that
+            our tours have a positive impact on the environment and the people we meet along the way. Join us on a journey
+            of discovery and exploration, and discover the world's most incredible destinations with us.
+        </p>
+    </div>
+
+    <div class="in_ex">
+        <h3>Included / Excluded</h3>
+        <p class="c-grey">
+            To help you plan your trip, we have put together a list of what's included and what's not included in your
+            tour package. This will give you a clear understanding of what to expect and help you make any necessary
+            arrangements before your journey begins.
+        </p>
+        <div class="con_ul">
+            <ul>
+                <li>Train tickets and Bus transportation</li>
+                <li>Breakfast, lunch, and dinner.</li>
+                <li>Accommodation at hotel</li>
+                <li>Professional tour guide</li>
+            </ul>
+            <ul>
+                <li>Transfers between destinations</li>
+                <li>Entrance fees to museums</li>
+                <li class="x-mark">Custom itinerary</li>
+                <li class="x-mark">Swimming Pool</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    
+document.addEventListener("DOMContentLoaded", function() {
+    var slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("dot");
+        if (n > slides.length) { slideIndex = 1 }
+        if (n < 1) { slideIndex = slides.length }
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+    }
+
+    // Attach click handlers for next/prev buttons
+    document.querySelector(".prev").addEventListener("click", function() {
+        plusSlides(-1);
+    });
+    document.querySelector(".next").addEventListener("click", function() {
+        plusSlides(1);
+    });
+
+    // Attach click handlers for dots
+    var dots = document.getElementsByClassName("dot");
+    for (i = 0; i < dots.length; i++) {
+        (function(index) {
+            dots[index].addEventListener("click", function() {
+                currentSlide(index + 1);
+            });
+        })(i);
+    }
+});
+
+</script>
+
+{% endblock content %}

@@ -1,68 +1,240 @@
- {% extends "base.html" %}
- {% load bootstrap4 %}
- {% load static %}
- {% block add %}
- <link rel="stylesheet" href="{% static 'CSS/search.css' %}">
- {% endblock add %}
- {% block content %}
- <!--   Start Search  -->
- <div class="parent">
-    <div class="container">
-        <div class="cards">
-            {% for hotel in hotels %}
-            <div class="card">
-                <img class="card-img-top" src="{{hotel.image.url}}" alt="Card image cap" />
-                <div class="card-body">
-                    <h5 class="card-title">{{hotel.name}}</h5>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <br />
-                    <i class="fa-solid fa-location-dot"></i>
-                    <p class="card-text">{{hotel.country}} - {{hotel.address}}</p>
+{% extends "base.html" %}
+{% load bootstrap4 %}
+{% load static %}
+{% block add %}
+<link rel="stylesheet" href="{% static 'CSS/search.css' %}">
+<style>
+    .fa-star {
+        display: inline-block;
+        color: gold;
+        user-select: none;
+    }
+    
+    .filter {
+        width: 100%;
+        height: fit-content;
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0 12px 20px 0 rgb(0 0 0 / 13%), 0 2px 4px rgb(0 0 0 / 12%);
+        display: flex;
+        gap: 50px;
+        margin-bottom: 30px;
+        background-color: #f8f9fa; /* Added background color */
+        position: relative; /* Added position relative */
+        z-index: 100; /* Added z-index */
+    }
+    
+    .filter > div {
+        flex: 1; /* Make child divs fill the container evenly */
+    }
+    
+    .filter .filter-text {
+        font-size: 20px; /* Adjusted font size */
+        font-weight: bold; /* Adjusted font weight */
+        margin-bottom: 10px; /* Added margin bottom */
+    }
+    
+    .our-packages {
+        margin-bottom: 70px;
+        position: relative; /* Ensure it's positioned relative to contain absolute elements */
+        z-index: 1; /* Ensure it's above the filter */
+    }
+    
+    .our-packages .intro-text-packages {
+        background-image: url({% static 'images/our-packages.jpeg' %});
+        background-size: cover;
+        height: calc(100vh - 120px);
+        color: white;
+        flex-basis: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+    
+    .our-packages .intro-text-packages::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: -1;
+    }
+    
+    .our-packages .intro-text-packages h1 {
+        margin: 0;
+        font-weight: bold;
+        font-size: 50px;
+        color: white;
+    }
+        .parent {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            justify-items: center;
+            position: relative;
+            z-index: 1;
+        }
+    
+        .card {
+            width: 100%; /* Adjust width as needed */
+            height: max-content;
+            margin: 10px;
+            border-radius: 10px;
+            box-shadow: 0 12px 20px 0 rgb(0 0 0 / 13%), 0 2px 4px rgb(0 0 0 / 12%);
+        }
+    
+        .card-img-top {
+            width: 100%; /* Adjust width as needed */
+            height: 250px;
+            border-radius: 10px;
+        }
 
-                    <ul>
-                        <li>{{hotel.features1}}</li>
-                        <li>{{hotel.features2}}</li>
-                        <li>{{hotel.features3}}</li>
-                    </ul>
+    
+    
+    .card:hover .card-img-top {
+        opacity: 0.8;
+    }
+    
+    .card-body {
+        padding: 10px;
+    }
+    
+    .name-star {
+        display: flex;
+        align-items: center;
+    }
+    
+    .card-title {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+    
+    .card .card-body .name-star i {
+        font-size: 15px;
+        margin-left: 10px;
+    }
+    
+    .location-h {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0;
+    }
+    
+    .fa-location-dot {
+        margin-right: 10px;
+        color: red;
+    }
+    
+    .card ul {
+        padding-top: 10px;
+        border-top: 1px solid #333;
+        border-bottom: 1px solid #333;
+    }
+    
+    .card ul li {
+        color: #333;
+        display: block;
+        font-size: 17px;
+        padding-bottom: 10px;
+        margin-right: 10px;
+    }
+    
+    .card ul li::before {
+        content: '\f058';
+        font-family: "Font Awesome 5 Free";
+        color: var(--main-color);
+        font-weight: 900;
+        margin-right: 10px;
+    }
+    
+    .info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 0;
+    }
+    
+    .btn-book {
+        background-color: var(--main-color);
+        color: white;
+        padding: 8px 15px;
+        cursor: pointer;
+        border: none;
+        user-select: none;
+        border-radius: var(--br-5);
+        transition: var(--main-transition);
+    }
+    
+    .btn-book:hover {
+        background-color: var(--secondary-color);
+        -o-transform: scale(.97);
+        -webkit-transform: scale(.97);
+        -moz-transform: scale(.97);
+        -ms-transform: scale(.97);
+        transform: scale(.97);
+    }
+</style>
+{% endblock add %}
+{% block content %}
 
-                    <hr />
-                    <p class="price">price : {{hotel.price}} EG</p>
-                    <a class="btn btn-primary btn-lg btn-block" target="_blank" type="submit" href="{% url "payment_hotel" slug=hotel.slug  %}">Book now </a>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
 
-                  <!--  Start Checkboxes  -->
-                  <div class="container">
-                    <div class="row justify-content">
-                        <div class="col-md-20">
-                            <form method="GET">
-                                {% for field in myfilter.form.visible_fields %}
-                                <div class="form-group row">
-                                    <label class="col-sm-6 col-form-label">{{ field.label }}</label>
-                                    <div class="col-sm-8">
-                                        {{ field }}
-                                    </div>
-                                </div>
-                                {% endfor %}
-                                <div class="form-group text-center">
-                                    <button type="submit" class="btn btn-primary btn-lg btn-block">Filter</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                
-
+<!-- Start Search -->
+<div class="our-packages">
+    <div class="intro-text-packages">
+        <h1>Our Packages</h1>
     </div>
 </div>
-<!-- End Checkboxes  -->
+<div class="filter">
+    <form method="GET" class="row">
+        {% for field in myfilter.form.visible_fields %}
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label>{{ field.label }}</label>
+                {{ field }}
+            </div>
+        </div>
+        {% endfor %}
+        <div class="col-sm-12 text-center">
+            <button type="submit" class="btn btn-primary btn-lg btn-block">Filter</button>
+        </div>
+    </form>
+</div>
 
 
+<div class="parent container">
+    {% for hotel in hotels %}
+    <div class="card">
+        <a href="{% url 'book_hotel' slug=hotel.slug %}">
+        <img class="card-img-top" src="{{ hotel.image.url }}" alt="Card image cap" />
+        </a>
+        <div class="card-body">
+            <div class="name-star">
+                <h3 class="card-title">{{ hotel.name }}</h3>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+            </div>
+            <div class="location-h">
+                <i class="fa-solid fa-location-dot"></i>
+                <p class="card-text">{{ hotel.country }} - {{ hotel.address }}</p>
+            </div>
+            <ul>
+                <li>{{ hotel.features1 }}</li>
+                <li>{{ hotel.features2 }}</li>
+                <li>{{ hotel.features3 }}</li>
+            </ul>
+            <div class="info">
+                <p class="price">price : {{ hotel.price }} EG</p>
+                <a class="btn-book " target="_blank" href="{% url 'book_hotel' slug=hotel.slug %}">Book now</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
 
 {% endblock content %}
