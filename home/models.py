@@ -4,7 +4,9 @@ from django.utils.text import slugify
 from djstripe.models import StripeModel
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
-# from search.models import Hotel
+from accounts.models import AppUser
+
+from search.models import Hotel
 # Create your models here.
 def image_upload(instance,filename):
     imagename,extenstion = filename.split(".")
@@ -80,12 +82,12 @@ class Continent(models.Model):
         return self.name
     
 class UserPayment(models.Model):
-	app_user = models.ForeignKey(User, on_delete=models.CASCADE)
+	app_user = models.ForeignKey(AppUser, on_delete=models.CASCADE)
 	payment_bool = models.BooleanField(default=False)
 	stripe_checkout_id = models.CharField(max_length=500)
 
 
-@receiver(post_save, sender=User)
+@receiver(post_save, sender=AppUser)
 def create_user_payment(sender, instance, created, **kwargs):
 	if created:
 		UserPayment.objects.create(app_user=instance)

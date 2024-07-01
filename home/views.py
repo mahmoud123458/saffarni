@@ -1,11 +1,17 @@
 from django.shortcuts import render
 
-from . models import Place,Continent
+from . models import Place,Continent, UserPayment
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 from search.models import Hotel
 from django.contrib.auth.models import User
-
+from accounts.models import Profile
+from django.shortcuts import render, redirect
+from django.conf import settings
+from django.views.decorators.csrf import csrf_exempt
+from django.http import HttpResponse
+import stripe
+import time
 
 # Create your views here.
 def home(request):
@@ -41,54 +47,9 @@ def home_detail(request,slug):
 # stripe.api_key = settings.STRIPE_SECRET_KEY
 
 
-def search_flights(request):
-    if request.method == 'POST':
-        # Process the form data
-        source = request.POST.get('source')
-        destination = request.POST.get('destination')
-        date = request.POST.get('date')
-        flight_class = request.POST.get('class')
-
-        # Filter places based on the provided search parameters
-        places = Place.objects.all()
-
-        if destination:
-            places = places.filter(country=destination)
-        
-        if date:
-            places = places.filter(date=date)
-        
-        if flight_class:
-            places = places.filter(flight_class=flight_class)
-
-        
-        return render(request, 'shop.html', {'places': places})
-    else:
-        return render(request, 'home/index.html')
 
 
 
-
-from django.shortcuts import render, redirect
-from django.conf import settings
-from django.contrib.auth.decorators import login_required
-from django.views.decorators.csrf import csrf_exempt
-from accounts.models import Profile
-from django.http import HttpResponse
-import stripe
-import time
-
-
-
-
-from django.shortcuts import render, redirect
-from django.conf import settings
-from django.contrib.auth.decorators import login_required
-from django.views.decorators.csrf import csrf_exempt
-from django.http import HttpResponse
-import stripe
-import time
-from accounts.models import Profile  # Adjust the import path based on your actual Profile model location
 
 stripe.api_key = settings.STRIPE_SECRET_KEY_TEST
 
@@ -138,13 +99,10 @@ def payment_successful(request):
     customer = stripe.Customer.retrieve(session.customer)
     
     user_id = request.user.id
-    try:
-        user_payment = Profile.objects.get(user_id=user_id)
-        user_payment.stripe_checkout_id = checkout_session_id
-        user_payment.save()
-    except Profile.DoesNotExist:
-        # Handle the case where Profile object does not exist for the user
-        pass
+    user_payment = Profile.objects.get(user_id=user_id)
+    user_payment.stripe_checkout_id = checkout_session_id
+    user_payment.save()
+    
     
     return render(request, 'home/payment_successful.html', {'customer': customer})
 
@@ -171,12 +129,37 @@ def stripe_webhook(request):
         session_id = session.get('id')
         time.sleep(15)  # Introducing delay (if necessary)
         
-        try:
-            user_payment = Profile.objects.get(stripe_checkout_id=session_id)
-            user_payment.payment_bool = True
-            user_payment.save()
-        except Profile.DoesNotExist:
-            # Handle the case where Profile object does not exist for the provided session_id
-            pass
+        user_payment = UserPayment.objects.get(stripe_checkout_id=session_id)
+        user_payment.payment_bool = True
+        user_payment.save()
 
     return HttpResponse(status=200)
+
+
+
+
+
+def search_flights(request):
+    if request.method == 'POST':
+        # Process the form data
+        source = request.POST.get('source')
+        destination = request.POST.get('destination')
+        date = request.POST.get('date')
+        flight_class = request.POST.get('class')
+
+        # Filter places based on the provided search parameters
+        places = Place.objects.all()
+
+        if destination:
+            places = places.filter(country=destination)
+        
+        if date:
+            places = places.filter(date=date)
+        
+        if flight_class:
+            places = places.filter(flight_class=flight_class)
+
+        
+        return render(request, 'shop.html', {'places': places})
+    else:
+        return render(request, 'home/index.html')

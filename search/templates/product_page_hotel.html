@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="container home_msg">
+  {% if user.is_authenticated %}
+    <form enctype="multipart/form-data" method="post" role="product_page">
+      {% csrf_token %}
+      <h2>Hi {{ user }}! To pay, click on this button
+        <a href="{% url 'product_page' %}" class="btn btn-success">Payment</a>
+      </h2>
+    </form>
+  {% else %}
+    <h2>You're not logged in...</h2>
+    <a href="{% url 'login' %}" class="btn btn-secondary">Log in</a>
+  {% endif %}
+</div>
+
+{% endblock %}

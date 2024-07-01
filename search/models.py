@@ -1,5 +1,8 @@
 from django.db import models
 from django.utils.text import slugify
+from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 # Create your models here.
 def image_upload2(instance,filename):
@@ -52,3 +55,12 @@ class Hotel(models.Model):
     def __str__(self):
         return self.name
    
+from accounts.models import AppUser
+
+
+
+@receiver(post_save, sender=AppUser)
+def create_user_payment(sender, instance, created, **kwargs):
+	if created:
+          from home.models import UserPayment
+          UserPayment.objects.create(app_user=instance)

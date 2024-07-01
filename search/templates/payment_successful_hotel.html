@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+{% if error %}
+  <p>{{ error }}</p>
+{% else %}
+  <p>Payment was successful!</p>
+  <p>Customer: {{ customer.name }}</p>
+  <!-- Add more customer details as needed -->
+{% endif %}
+
+{% endblock content %}
+
+
