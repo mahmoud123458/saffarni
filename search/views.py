@@ -48,7 +48,7 @@ def product_page(request):
                 unit_amount=total_price_int,
                 currency='usd',
                 product_data={
-                    'name': 'Trip Payment',
+                    'name': 'Hotel Payment',
                 },
             )
         except stripe.error.StripeError as e:

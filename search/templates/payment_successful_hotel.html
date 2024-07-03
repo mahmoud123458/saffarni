@@ -4,13 +4,11 @@
 
 {% block content %}
 
-{% if error %}
-  <p>{{ error }}</p>
-{% else %}
-  <p>Payment was successful!</p>
-  <p>Customer: {{ customer.name }}</p>
-  <!-- Add more customer details as needed -->
-{% endif %}
+<body>
+    <div class="container home_msg">
+        <h1>Thanks for your booking in our Hotel{{customer.name}}</h1>
+    </div>
+</body>
 
 {% endblock content %}
 

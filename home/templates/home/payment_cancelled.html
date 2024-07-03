@@ -3,13 +3,31 @@
 {% load static %}
 
 {% block content %}
+<style>
+    .home_msg {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    .text {
+        text-align: center;
+        margin-top: 20px; 
+    }
+    h1 {
+        margin-top: 20px;
+    }
+    i {
+        color: #1bbc9b;
+        margin-right: 15px;
+    }
+</style>
 
-    <body>
-        <div class="container home_msg">
-            <h1>Your payment didn't go through :( </h1>
+<div class="container home_msg">
+    <div class="text">
+            <h1>Your payment didn't go through    <i class="fa-regular fa-face-frown fa-xl"></i></h1>
         </div>
-    </body>
-
+    </div>
 {% endblock content %}
 
 

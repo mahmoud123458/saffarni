@@ -9,12 +9,12 @@
     {% bootstrap_css %}
     {% bootstrap_javascript %}
     <!-- Render All Elements Normally -->
-    <link rel="stylesheet" href="{% static '/CSS/normalize.css' %}" />
+    <link rel="stylesheet" href="{% static 'CSS/normalize.css' %}" />
     <!-- Font Awesome Library -->
     <link href="{% static 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css"rel="stylesheet' %}"/>
-    <link rel="stylesheet" href="{% static '/CSS/all.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'CSS/all.min.css' %}" />
     <!-- Main Template CSS File -->
-    <link rel="stylesheet" href="{% static '/CSS/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'CSS/style.css' %}" />
 
     <link rel="stylesheet" href="{% static 'CSS/login.css' %}">
 
@@ -29,6 +29,9 @@
       href="{% static 'https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&#038;display=swap' %}"
       rel="stylesheet"
     />
+    <style>
+
+    </style>
     {% comment %} <link rel="stylesheet" href="{% static 'CSS/search.css' %}" /> {% endcomment %}
     {% block add %}{% endblock add %}
   </head>
