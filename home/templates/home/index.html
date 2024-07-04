@@ -251,7 +251,11 @@
                 <a href="{% url 'detail' slug=place.slug %}">
                 <button class="btn">Details</button>
               </a>
+              {% if place.discount %}
                 <p>EGP {{place.price}} <span>EGP {{place.discount}}</span></p>
+              {% else %}
+              <p>EGP {{place.price}}</p>
+              {% endif %}
               </div>
             </div>
           </div>

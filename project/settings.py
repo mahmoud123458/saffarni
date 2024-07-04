@@ -55,7 +55,6 @@ INSTALLED_APPS = [
     'search',
     'bootstrap4',
     'django_filters',
-    'djstripe',
 
     
 ]
@@ -72,7 +71,16 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'accounts.middleware.CustomSessionMiddleware',  # تأكد من وجود هذا الوسيط بشكل صحيح
+    # 'accounts.middleware.PreventAdminLoginMiddleware', 
+    'accounts.middleware.DisableAdminLoginMiddleware', 
+    'accounts.middleware.DisableAdminLogoutMiddleware',
+
+
 ]
+
+
+
 
 ROOT_URLCONF = 'project.urls'
 
@@ -144,7 +152,7 @@ STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
     BASE_DIR / "static",
-    "/var/www/static/",
+    # "/var/www/static/",
 ]
 
 MEDIA_URL = 'media/'
@@ -164,3 +172,8 @@ EMAIL_PORT = 587
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+SESSION_COOKIE_NAME = 'main_sessionid'
+
+ADMIN_SESSION_COOKIE_NAME = 'admin_sessionid'

@@ -1,7 +1,6 @@
 from django.db import models
 from django.dispatch import receiver
 from django.utils.text import slugify
-from djstripe.models import StripeModel
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from accounts.models import AppUser
@@ -48,7 +47,7 @@ class Place(models.Model):
     image = models.ImageField(upload_to=image_upload)
     description = models.TextField()
     price = models.DecimalField(max_digits=8, decimal_places=2)
-    discount=models.DecimalField(max_digits=8, decimal_places=2)
+    discount=models.DecimalField(max_digits=8, decimal_places=2,blank=True,null=True)
     period=models.CharField(max_length=30,choices=period)
     duration=models.IntegerField(null=True,blank=True)
     source=models.CharField( max_length=50,choices=source) 

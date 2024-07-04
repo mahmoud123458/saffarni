@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate,login
+from django.contrib.auth import authenticate,login as auth_login
 from django.urls import reverse
 from django.db import IntegrityError
 
-from .forms import SignupForm,UserForm,ProfileForm
+from .forms import SignupForm,UserForm,ProfileForm,LoginForm
 from .models import Profile
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
@@ -75,3 +75,31 @@ def profile_edit(request):
         userform=UserForm(instance=request.user)
         profileform=ProfileForm(instance=profile)
     return render(request,'accounts/profile_edit.html',{'userform':userform,'profileform':profileform})
+
+
+def login_view(request):
+    if request.method == "POST":
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            user = authenticate(request, username=username, password=password)
+            
+            if user is not None:
+                if user.is_superuser:
+                    messages.warning(request, 'المسؤولون لا يمكنهم تسجيل الدخول هنا. يرجى استخدام لوحة المسؤول.')
+                    return redirect('/admin/login/?next=/admin/')
+                else:
+                    auth_login(request, user)
+                    next_url = request.POST.get('next', reverse('home'))
+                    return redirect(next_url)
+            else:
+                messages.error(request, 'اسم المستخدم وكلمة المرور غير متطابقين. يرجى المحاولة مرة أخرى.')
+    else:
+        form = LoginForm()
+    
+    context = {
+        'form': form,
+        'next': request.GET.get('next', '')
+    }
+    return render(request, 'registration/login.html', context)
