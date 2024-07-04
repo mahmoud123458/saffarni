@@ -52,6 +52,10 @@ def home_detail(request,slug):
 
 
 stripe.api_key = settings.STRIPE_SECRET_KEY_TEST
+def convert_usd_to_egp(usd_amount):
+    exchange_rate = settings.EXCHANGE_RATE_USD_TO_EGP
+    egp_amount = usd_amount * exchange_rate
+    return egp_amount
 
 @login_required(login_url='login')
 def product_page(request):
@@ -59,23 +63,25 @@ def product_page(request):
         total_price = request.POST.get('total_price')
         
         if total_price is None:
-            return render(request, 'home/product_page.html', {'error': 'Total price not provided'})
+            return render(request, 'product_page_hotel.html', {'error': 'Total price not provided'})
         
         try:
-            total_price_int = int(total_price)
+            total_price_usd = int(total_price)
         except ValueError:
-            return render(request, 'home/product_page.html', {'error': 'Invalid total price value'})
+            return render(request, 'product_page_hotel.html', {'error': 'Invalid total price value'})
+
+        total_price_egp = convert_usd_to_egp(total_price_usd)
 
         try:
             price = stripe.Price.create(
-                unit_amount=total_price_int,
-                currency='usd',
+                unit_amount=int(total_price_egp * 100),  # تحويل السعر إلى أقراص سترايب بالقرش
+                currency='egp',
                 product_data={
-                    'name': 'Trip Payment',
+                    'name': 'Hotel Payment',
                 },
             )
         except stripe.error.StripeError as e:
-            return render(request, 'home/product_page.html', {'error': str(e)})
+            return render(request, 'product_page_hotel.html', {'error': str(e)})
 
         checkout_session = stripe.checkout.Session.create(
             payment_method_types=['card'],
@@ -91,7 +97,7 @@ def product_page(request):
             cancel_url=settings.REDIRECT_DOMAIN + '/payment_cancelled',
         )
         return redirect(checkout_session.url, code=303)
-    return render(request, 'home/product_page.html')
+    return render(request, 'product_page_hotel.html')
 
 def payment_successful(request):
     checkout_session_id = request.GET.get('session_id')
@@ -103,11 +109,10 @@ def payment_successful(request):
     user_payment.stripe_checkout_id = checkout_session_id
     user_payment.save()
     
-    
-    return render(request, 'home/payment_successful.html', {'customer': customer})
+    return render(request, 'payment_successful_hotel.html', {'customer': customer})
 
 def payment_cancelled(request):
-    return render(request, 'home/payment_cancelled.html')
+    return render(request, 'payment_cancelled_hotel.html')
 
 @csrf_exempt
 def stripe_webhook(request):

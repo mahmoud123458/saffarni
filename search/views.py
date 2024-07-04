@@ -30,6 +30,11 @@ def book_hotel(request,slug):
 
 stripe.api_key = settings.STRIPE_SECRET_KEY_TEST
 
+def convert_usd_to_egp(usd_amount):
+    exchange_rate = settings.EXCHANGE_RATE_USD_TO_EGP
+    egp_amount = usd_amount * exchange_rate
+    return egp_amount
+
 @login_required(login_url='login')
 def product_page(request):
     if request.method == 'POST':
@@ -39,14 +44,16 @@ def product_page(request):
             return render(request, 'product_page_hotel.html', {'error': 'Total price not provided'})
         
         try:
-            total_price_int = int(total_price)
+            total_price_usd = int(total_price)
         except ValueError:
             return render(request, 'product_page_hotel.html', {'error': 'Invalid total price value'})
 
+        total_price_egp = convert_usd_to_egp(total_price_usd)
+
         try:
             price = stripe.Price.create(
-                unit_amount=total_price_int,
-                currency='usd',
+                unit_amount=int(total_price_egp * 100),  # تحويل السعر إلى أقراص سترايب بالقرش
+                currency='egp',
                 product_data={
                     'name': 'Hotel Payment',
                 },
@@ -79,7 +86,6 @@ def payment_successful(request):
     user_payment = Profile.objects.get(user_id=user_id)
     user_payment.stripe_checkout_id = checkout_session_id
     user_payment.save()
-    
     
     return render(request, 'payment_successful_hotel.html', {'customer': customer})
 

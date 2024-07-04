@@ -17,22 +17,51 @@
         border-radius: 15px;
         box-shadow: 0 12px 20px 0 rgb(0 0 0 / 13%), 0 2px 4px rgb(0 0 0 / 12%);
         display: flex;
-        gap: 50px;
+        flex-wrap: wrap;
+        gap: 10px; 
         margin-bottom: 30px;
-        background-color: #f8f9fa; /* Added background color */
-        position: relative; /* Added position relative */
-        z-index: 100; /* Added z-index */
+        background-color: #f8f9fa;
+        position: relative;
+        z-index: 100;
     }
     
-    .filter > div {
-        flex: 1; /* Make child divs fill the container evenly */
+    .filter .form-group {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 5px; 
     }
     
-    .filter .filter-text {
-        font-size: 20px; /* Adjusted font size */
-        font-weight: bold; /* Adjusted font weight */
-        margin-bottom: 10px; /* Added margin bottom */
+    .filter .form-group label {
+        display: block;
+        width: 40%;
+        margin-bottom: 0;
+        font-weight: bold;
     }
+    
+    .filter .form-group input,
+    .filter .form-group select {
+        width: 55%; 
+        box-sizing: border-box;
+        padding: 3px; 
+        font-size: 18px; 
+    }
+    
+    .filter .row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    
+    .filter .col-sm-6 {
+        flex: 1 1 45%; 
+        min-width: 150px; 
+    }
+    
+    .filter .col-sm-12 {
+        flex: 1 1 100%;
+    }
+    
     
     .our-packages {
         margin-bottom: 70px;
@@ -202,6 +231,9 @@
         </div>
     </form>
 </div>
+
+
+
 
 
 <div class="parent container">
