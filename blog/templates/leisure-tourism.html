@@ -1,10 +1,11 @@
+{% extends "base2.html" %}
 {% load static %}
 {% block add %}
 <link rel="stylesheet" href="{% static 'CSS/leisure-tourism.css' %}" />
 
 {% endblock add %}
 
-{% block content %}
+{% block blog %}
 <style>
     .review {
         background-image: url({% static "images/review_background.png" %});
@@ -175,4 +176,4 @@ document.addEventListener("DOMContentLoaded", function() {
 
 </script>
 
-{% endblock content %}
+{% endblock  %}

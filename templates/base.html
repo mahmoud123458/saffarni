@@ -1,13 +1,14 @@
 {% load static %}
 {% load bootstrap4 %}
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Safarnee</title>
-    {% bootstrap_css %}
-    {% bootstrap_javascript %}
+    {% comment %} {% bootstrap_css %}
+    {% bootstrap_javascript %} {% endcomment %}
     <!-- Render All Elements Normally -->
     <link rel="stylesheet" href="{% static 'CSS/normalize.css' %}" />
     <!-- Font Awesome Library -->
@@ -48,52 +49,56 @@
           ></i>
           <ul class="main-nav">
             <li>
-              <a href="{% url 'home' %}" class="{% if request.path == '/' %}active{% endif %}">Home</a>
+                <a href="{% url 'home' %}" class="{% if request.path == '/' %}active{% endif %}">Home</a>
             </li>
             <li>
-              <a href="{% url 'shop' %}" class="{% if request.path == '/shop/' %}active{% endif %}">Shop</a>
+                <a href="{% url 'shop' %}" class="{% if 'shop' in request.path %}active{% endif %}">Shop</a>
             </li>
             <li>
-              <a href="{% url 'blog' %}" class="{% if request.path == '/blog/' %}active{% endif %}">Blog</a>
+                <a href="{% url 'blog' %}" class="{% if 'blog' in request.path %}active{% endif %}">Blog</a>
             </li>
             <li>
-              <a href="{% url 'about' %}" class="{% if request.path == '/about/' %}active{% endif %}">About</a>
+                <a href="{% url 'about' %}" class="{% if 'about' in request.path %}active{% endif %}">About</a>
             </li>
             <li>
-              <a href="{% url 'contact' %}" class="{% if request.path == '/contact/' %}active{% endif %}">Contact</a>
+                <a href="{% url 'contact' %}" class="{% if 'contact' in request.path %}active{% endif %}">Contact</a>
             </li>
             <li>
-              <a href="{% url 'search' %}" class="{% if request.path == '/search/' %}active{% endif %}">Hotels</a>
+                <a href="{% url 'search' %}" class="{% if 'search' in request.path %}active{% endif %}">Hotels</a>
             </li>
-          </ul>
+        </ul>
+        
+        
+        
+        
           
         {% if request.user.is_authenticated %}
-          <a href="{% url 'accounts:profile' %}">
-            <button class="btn btn-login">
-              Profile<i class="fa-regular fa-user"></i>
-            </button>
-          </a>
-          <form action="{% url 'logout' %}" method="POST">
-            {% csrf_token %}
-            <button type="submit" class="btn btn-login">
-              Logout <i class="fas fa-arrow-alt-circle-right"></i>
-            </button>
-          </form>
-          
-        
-        
-        {% else %}
-          <a href="{% url 'login' %}">
-            <button class="btn btn-login">
-              Login<i class="fa-regular fa-user"></i>
-            </button>
-          </a>
-          <a href="{% url 'accounts:signup' %}">
-            <button class="btn btn-login">
-              Signup<i class="fa-regular fa-user"></i>
-            </button>
-          </a>
-        {% endif %}
+            <a href="{% url 'accounts:profile' %}">
+              <button class="btn btn-login">
+                Profile<i class="fa-regular fa-user"></i>
+              </button>
+            </a>
+            {% if profile and profile.image %}
+              <img src="{{ profile.image.url }}" alt="Profile Photo" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; margin-left: 10px;">
+            {% endif %}
+            <form action="{% url 'logout' %}" method="POST">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-login">
+                Logout <i class="fas fa-arrow-alt-circle-right"></i>
+              </button>
+            </form>
+          {% else %}
+            <a href="{% url 'login' %}">
+              <button class="btn btn-login">
+                Login<i class="fa-regular fa-user"></i>
+              </button>
+            </a>
+            <a href="{% url 'accounts:signup' %}">
+              <button class="btn btn-login">
+                Signup<i class="fa-regular fa-user"></i>
+              </button>
+            </a>
+          {% endif %}
 
          
           
@@ -209,53 +214,21 @@
             <h3>Contact</h3>
             <div class="contact-details">
               <i class="fa fa-location"></i>
-              <p>Shebeen - Menoufia - Egypt</p>
+              <p>Rafah - Gaza</p>
             </div>
             <div class="contact-details">
               <i class="fa fa-phone"></i>
-              <p>+20 1069641013</p>
+              <p>+970 599 000 000</p>
             </div>
             <div class="contact-details">
-              <i class="fa-solid fa-envelope fa-xs"></i>
-              <p>safarnee@gmail.com</p>
+              <i class="fa fa-envelope"></i>
+              <p>Safarnee@gmail.com</p>
             </div>
           </div>
         </div>
-
-        <!-- <div class="row">
-          <div class="form-con">
-            <form action="">
-              <input type="email" placeholder="Email here..." required />
-              <button class="btn" title="Send">
-                <i class="fa fa-paper-plane"></i>
-              </button>
-            </form>
-          </div>
-        </div>
+        <p class="rights">© 2024 Safarnee. All Rights Reserved.</p>
       </div>
-      <div class="flag-clr"></div>
-      <div class="flag"></div> -->
     </footer>
-    <!-- End footer -->
-
-    <!-- Arrow Go To Up Website  -->
-    <button class="scrollUp" title="Up">
-      <i class="fa-solid fa-angles-up fa-l"></i>
-    </button>
-
-    <!--*  Java Script  *-->
-    <script src="{% static 'main.js' %}"></script>
-    <script src="{% static './js/details.js' %}"></script> 
-    <script src="{% static './js/search.js' %}"></script>
-    <script src="{% static 'https://js.stripe.com/v3/' %}"></script>
-    <script src="{% static './js/cultural-tourism.js' %}"></script> 
-    <script src="{% static './js/eco-tourism.js' %}"></script>
-    <script src="{% static './js/leisure-tourism.js' %}"></script>   
-    <script src="{% static './js/religious-tourism.js' %}"></script>
-
-
-
-   
-    
+    <!-- End Footer -->
   </body>
 </html>

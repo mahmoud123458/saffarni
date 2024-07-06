@@ -15,20 +15,24 @@ from django.contrib.auth.models import User
 from .forms import SignupForm, UserForm, ProfileForm
 from .models import Profile
 
+
 def signup(request):
     if request.method == "POST":
-        form = SignupForm(request.POST)
+        form = SignupForm(request.POST, request.FILES)  # Include request.FILES for file uploads
         if form.is_valid():
             user = form.save(commit=False)
             user.save()
             city = form.cleaned_data['city']
             phone_number = form.cleaned_data['phone_number']
+            image = form.cleaned_data.get('image')  # Get photo from cleaned data
+
             try:
                 profile = Profile.objects.create(user=user, city=city, phone_number=phone_number)
             except IntegrityError:
                 profile = Profile.objects.get(user=user)
                 profile.city = city
                 profile.phone_number = phone_number
+                
                 profile.save()
 
             user.refresh_from_db()
@@ -36,13 +40,10 @@ def signup(request):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=user.username, password=raw_password)
             
-            # Check if the user is an admin (superuser)
             if user and user.is_superuser:
-                # If admin, show a message and redirect
                 messages.warning(request, 'Admin users cannot log in here.')
                 return redirect('/admin/')
             
-            # If not admin, log in the user and redirect to profile
             login(request, user)
             return redirect(reverse('accounts:profile'))
 
@@ -53,8 +54,8 @@ def signup(request):
 
 
 def profile(request):
-    profile=Profile.objects.get(user=request.user)
-    return render(request,'accounts/profile.html',{'profile':profile})
+    profile = Profile.objects.get(user=request.user)
+    return render(request, 'accounts/profile.html', {'profile': profile})
 
 
 

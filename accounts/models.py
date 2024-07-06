@@ -20,7 +20,7 @@ class Profile(models.Model):
 
 
     def __str__(self):
-        return str(self.user)
+        return str(self.user.username)
 
 @receiver(post_save, sender=User) 
 def create_user_profile(sender, instance, created, **kwargs):
